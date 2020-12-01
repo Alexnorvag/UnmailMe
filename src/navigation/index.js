@@ -1,12 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {HeaderTitle, HeaderMenu} from '../components';
 import {navigationStyles} from '../styles';
 import {LoginStack} from './login';
 import {MainStack} from './main';
+import {checkAuth} from '../features/signin/signinSlice';
 
 const MyTheme = {
   ...DefaultTheme,
@@ -19,6 +21,14 @@ const MyTheme = {
 const Stack = createStackNavigator();
 
 export const RootNavigation = () => {
+  const dispatch = useDispatch();
+  const isAuthed = useSelector((state) => state.signin.isAuthed);
+
+  useEffect(() => {
+    console.log('check auth');
+    dispatch(checkAuth());
+  }, []);
+
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={MyTheme}>
@@ -36,8 +46,7 @@ export const RootNavigation = () => {
             ),
             headerTitleAlign: 'center',
           }}>
-          {/* change true to isAuthed */}
-          {false ? LoginStack() : MainStack()}
+          {isAuthed ? MainStack() : LoginStack()}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
