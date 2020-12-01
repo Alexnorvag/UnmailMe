@@ -8,6 +8,10 @@ export const checkAuth = createAsyncThunk('signin/checkAuth', async () => {
   return true;
 });
 
+export const logout = createAsyncThunk('signin/logout', async () => {
+  return false;
+});
+
 export const signinAdapter = createEntityAdapter();
 
 const initialState = signinAdapter.getInitialState({
@@ -25,6 +29,9 @@ export const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(checkAuth.fulfilled, (state, action) => {
+      state.isAuthed = action.payload;
+    });
+    builder.addCase(logout.fulfilled, (state, action) => {
       state.isAuthed = action.payload;
     });
   },
