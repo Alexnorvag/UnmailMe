@@ -1,21 +1,24 @@
 import React from 'react';
 import {
   Text,
-//   TextInput,
+  TextInput,
   TouchableOpacity,
   View,
   StyleSheet,
 } from 'react-native';
 import {Formik} from 'formik';
-import {TextInput} from 'react-native-gesture-handler';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
+
+import {viewStyles} from '../../styles';
+import {loginSchema} from '../../validation';
 
 export const LoginScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <View style={viewStyles.container}>
       <View style={styles.loginContainer}>
         <Formik
           initialValues={{email: '', password: ''}}
+          validationSchema={loginSchema}
           onSubmit={(values) => {
             console.log('values: ', values);
           }}>
@@ -33,17 +36,25 @@ export const LoginScreen = ({navigation}) => {
                   <TextInput
                     autoCapitalize="none"
                     placeholder="Email"
-                    onChange={handleChange('email')}
+                    style={viewStyles.input}
+                    onChangeText={handleChange('email')}
                     onBlur={handleBlur('email')}
                     value={values.email}
                   />
+                  <Text style={viewStyles.errorValidationText}>
+                    {touched.email && errors.email}
+                  </Text>
                   <TextInput
                     autoCapitalize="none"
                     placeholder="Password"
-                    onChange={handleChange('password')}
+                    style={viewStyles.input}
+                    onChangeText={handleChange('password')}
                     onBlur={handleBlur('password')}
                     value={values.password}
                   />
+                  <Text style={viewStyles.errorValidationText}>
+                    {touched.password && errors.password}
+                  </Text>
                 </View>
                 <TouchableOpacity
                   style={styles.submitButton}
