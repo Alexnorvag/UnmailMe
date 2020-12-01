@@ -8,6 +8,11 @@ export const checkAuth = createAsyncThunk('signin/checkAuth', async () => {
   return true;
 });
 
+export const login = createAsyncThunk('signin/login', async (params) => {
+  console.log('login to app: ', params);
+  return true;
+});
+
 export const logout = createAsyncThunk('signin/logout', async () => {
   return false;
 });
@@ -30,6 +35,9 @@ export const slice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(checkAuth.fulfilled, (state, action) => {
       state.isAuthed = action.payload;
+    });
+    builder.addCase(login.fulfilled, (state) => {
+      state.isAuthed = true;
     });
     builder.addCase(logout.fulfilled, (state, action) => {
       state.isAuthed = action.payload;

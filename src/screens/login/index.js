@@ -8,11 +8,15 @@ import {
 } from 'react-native';
 import {Formik} from 'formik';
 import {getStatusBarHeight} from 'react-native-status-bar-height';
+import {useDispatch} from 'react-redux';
 
 import {viewStyles} from '../../styles';
 import {loginSchema} from '../../validation';
+import {login} from '../../features/signin/signinSlice';
 
 export const LoginScreen = ({navigation}) => {
+  const dispatch = useDispatch();
+
   return (
     <View style={viewStyles.container}>
       <View style={styles.loginContainer}>
@@ -21,6 +25,7 @@ export const LoginScreen = ({navigation}) => {
           validationSchema={loginSchema}
           onSubmit={(values) => {
             console.log('values: ', values);
+            dispatch(login(values));
           }}>
           {({
             handleChange,
