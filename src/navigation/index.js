@@ -3,7 +3,7 @@ import {DefaultTheme, NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import {HeaderTitle} from '../components';
+import {HeaderTitle, HeaderMenu} from '../components';
 import {navigationStyles} from '../styles';
 import {LoginStack} from './login';
 import {MainStack} from './main';
@@ -31,10 +31,13 @@ export const RootNavigation = () => {
             headerStyle: navigationStyles.haederStyle,
             headerTitleContainerStyle:
               navigationStyles.headerTitleContainerStyle,
+            headerLeft: () => (
+              <HeaderMenu styles={navigationStyles.headerMenu} />
+            ),
             headerTitleAlign: 'center',
           }}>
           {/* change true to isAuthed */}
-          {true ? LoginStack() : MainStack()}
+          {false ? LoginStack() : MainStack()}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

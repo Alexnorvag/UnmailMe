@@ -5,6 +5,14 @@ export const navigationStyles = StyleSheet.create({
     elevation: 0,
     shadowColor: 'transparent',
   },
+  headerMenu: {
+    marginLeft: 10,
+    padding: 10,
+    backgroundColor: '#590866',
+    borderRadius: 16,
+    color: '#fff',
+    overflow: 'hidden',
+  },
   headerTitleContainerStyle: {
     height: '100%',
     paddingTop: 10,
