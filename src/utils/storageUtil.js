@@ -72,3 +72,51 @@ export async function getValue(key) {
     return false;
   }
 }
+
+export async function getMultiValues(keys) {
+  let values;
+  try {
+    values = await AsyncStorage.multiGet(keys);
+  } catch (e) {
+    console.log('LOG_Async Storage access failed', e);
+    return false;
+  }
+
+  let value;
+  values.forEach((v, i) => {
+    value[v[0]] = v[1];
+  });
+
+  return value;
+}
+
+export async function removeValue(key) {
+  try {
+    await AsyncStorage.removeItem(key);
+    return {success: true};
+  } catch (e) {
+    console.log('LOG_Async Storage access failed', e);
+    return {error: e};
+  }
+}
+
+export async function removeMultiValues(keys) {
+  try {
+    await AsyncStorage.multiRemove(keys);
+    return {success: true};
+  } catch (e) {
+    console.log('LOG_Async Storage access failed', e);
+    return {error: e};
+  }
+}
+
+export async function getAllKeys() {
+  let keys = [];
+  try {
+    keys = await AsyncStorage.getAllKeys();
+  } catch (e) {
+    console.log('LOG_Async Storage acess failed', e);
+  }
+}
+
+export default useStorage;
