@@ -3,9 +3,9 @@ import {
   createEntityAdapter,
   createSlice,
 } from '@reduxjs/toolkit';
+import auth from '../../utils/auth';
 import {getValue} from '../../utils/storageUtil';
 import {JWT_TOKEN} from '../../config';
-import Auth from '../../utils/auth';
 
 export const checkAuth = createAsyncThunk('signin/checkAuth', async () => {
   const token = await getValue(JWT_TOKEN);
@@ -16,13 +16,12 @@ export const checkAuth = createAsyncThunk('signin/checkAuth', async () => {
 
 export const login = createAsyncThunk('signin/login', async (params) => {
   console.log('login to app: ', params);
-  await Auth.login(params);
-  return true;
+  const {token, email} = await auth.login(params);
+  return {token, email};
 });
 
 export const logout = createAsyncThunk('signin/logout', async () => {
-  await Auth.logout();
-  return false;
+  await auth.logout();
 });
 
 export const signinAdapter = createEntityAdapter();
@@ -47,8 +46,8 @@ export const slice = createSlice({
     builder.addCase(login.fulfilled, (state) => {
       state.isAuthed = true;
     });
-    builder.addCase(logout.fulfilled, (state, action) => {
-      state.isAuthed = action.payload;
+    builder.addCase(logout.fulfilled, (state) => {
+      state.isAuthed = false;
     });
   },
 });
