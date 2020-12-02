@@ -21,6 +21,7 @@ export const login = createAsyncThunk('signin/login', async (params) => {
 });
 
 export const logout = createAsyncThunk('signin/logout', async () => {
+  await Auth.logout();
   return false;
 });
 
