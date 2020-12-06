@@ -2,8 +2,12 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import ScreenSlider from 'react-native-app-intro-slider';
 
-import {viewStyles} from '../../styles';
-import {IntroGettingStartedIcon, IntroTakePhotoIcon} from '../../assets/svg';
+import {viewStyles, introStyles} from '../../styles';
+import {
+  IntroGettingStartedIcon,
+  IntroTakePhotoIcon,
+  BackgroundIcon,
+} from '../../assets/svg';
 
 const slides = [
   {
@@ -20,7 +24,8 @@ const slides = [
       'Take a photo and unsubscribe to those nuisance mailers you get everyday.',
 
     image: () => (
-      <View style={{marginVertical: 30}}>
+      <View
+        style={[viewStyles.imageContainer, introStyles.imageIndentContainer]}>
         <IntroTakePhotoIcon />
       </View>
     ),
@@ -30,16 +35,14 @@ const slides = [
 export const IntroScreen = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
-      <View style={{flex: 1, alignItems: 'center'}}>
-        <View
-          style={{
-            width: '100%',
-            alignItems: 'center',
-            marginTop: 30,
-          }}>
+      <View style={introStyles.container}>
+        <View style={[viewStyles.imageContainer, introStyles.imageContainer]}>
+          <View style={viewStyles.imageContainerBackground}>
+            <BackgroundIcon />
+          </View>
           {item.image()}
         </View>
-        <View style={{marginTop: 30}}>
+        <View style={introStyles.contentWrapper}>
           <Text style={viewStyles.titleBold}>{item.title}</Text>
           <Text style={viewStyles.description}>{item.text}</Text>
         </View>
@@ -62,8 +65,8 @@ export const IntroScreen = ({navigation}) => {
   return (
     <ScreenSlider
       data={slides}
-      dotStyle={{backgroundColor: '#C4C4C4'}}
-      activeDotStyle={{backgroundColor: '#B538CA'}}
+      dotStyle={introStyles.dotStyle}
+      activeDotStyle={introStyles.activeDotStyle}
       renderItem={renderItem}
       renderNextButton={() => renderButton('Skip')}
       renderDoneButton={() => renderButton('Take Photo')}
