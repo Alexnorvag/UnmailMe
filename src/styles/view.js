@@ -20,4 +20,37 @@ export const viewStyles = StyleSheet.create({
     paddingLeft: 15,
     marginBottom: 10,
   },
+  button: {
+    height: 56,
+    width: '60%',
+    borderRadius: 16,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonMagical: {
+    backgroundColor: '#771f85',
+  },
+  buttonTextDefault: {
+    color: '#fff',
+    fontSize: 20,
+    fontWeight: '700',
+  },
+  titleBold: {
+    fontWeight: '700',
+    fontSize: 27,
+    textAlign: 'center',
+    paddingHorizontal: '15%',
+  },
+  description: {
+    fontWeight: '400',
+    fontSize: 18,
+    textAlign: 'center',
+    paddingHorizontal: '15%',
+    paddingVertical: '5%',
+  },
+  marginVerticalMedium: {
+    marginTop: 20,
+    marginBottom: 10,
+  },
 });

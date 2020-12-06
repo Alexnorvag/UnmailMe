@@ -2,8 +2,13 @@ import React, {useRef} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Menu, {MenuItem} from 'react-native-material-menu';
 import {View} from 'react-native';
+import {useDispatch} from 'react-redux';
+
+import {logout} from '../../features/signin/signinSlice';
 
 export const HeaderMenu = ({styles}) => {
+  const dispatch = useDispatch();
+
   const menuRef = useRef(null);
 
   const showMenu = () => {
@@ -16,6 +21,7 @@ export const HeaderMenu = ({styles}) => {
 
   const signout = () => {
     hideMenu();
+    dispatch(logout());
   };
 
   return (

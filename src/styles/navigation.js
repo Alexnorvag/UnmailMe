@@ -24,6 +24,7 @@ export const navigationStyles = StyleSheet.create({
       },
       android: {
         fontFamily: 'Roboto-Light',
+        // fontFamily: 'sans-serif-light',
       },
     }),
     color: 'rgba(0, 0, 0, 0.82)',
