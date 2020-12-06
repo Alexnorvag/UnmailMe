@@ -62,9 +62,9 @@ export const LoginScreen = ({navigation}) => {
                   </Text>
                 </View>
                 <TouchableOpacity
-                  style={styles.submitButton}
+                  style={[viewStyles.button, viewStyles.buttonMagical]}
                   onPress={handleSubmit}>
-                  <Text style={styles.submitButtonTitle}>Submit</Text>
+                  <Text style={viewStyles.buttonTextDefault}>Submit</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -87,18 +87,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
     marginBottom: getStatusBarHeight(),
-  },
-  submitButton: {
-    backgroundColor: '#771f85',
-    height: 50,
-    borderRadius: 8,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '60%',
-  },
-  submitButtonTitle: {
-    color: '#fff',
-    fontSize: 18,
   },
 });
