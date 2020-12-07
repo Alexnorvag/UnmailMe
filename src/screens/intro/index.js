@@ -54,6 +54,7 @@ export const IntroScreen = ({navigation}) => {
       <View
         style={[
           viewStyles.button,
+          viewStyles.buttonMedium,
           viewStyles.buttonMagical,
           viewStyles.marginVerticalMedium,
         ]}>
@@ -70,7 +71,7 @@ export const IntroScreen = ({navigation}) => {
       renderItem={renderItem}
       renderNextButton={() => renderButton('Skip')}
       renderDoneButton={() => renderButton('Take Photo')}
-      onDone={() => navigation.navigate('Home')}
+      onDone={() => navigation.navigate('Camera')}
       bottomButton={true}
     />
   );

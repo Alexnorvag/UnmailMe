@@ -94,7 +94,11 @@ export const LoginScreen = () => {
                   </View>
                 </View>
                 <TouchableOpacity
-                  style={[viewStyles.button, viewStyles.buttonMagical]}
+                  style={[
+                    viewStyles.button,
+                    viewStyles.buttonMedium,
+                    viewStyles.buttonMagical,
+                  ]}
                   onPress={handleSubmit}>
                   <Text style={viewStyles.buttonTextDefault}>Submit</Text>
                 </TouchableOpacity>
