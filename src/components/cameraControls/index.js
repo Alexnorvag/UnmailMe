@@ -6,7 +6,13 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {HeaderMenu} from '../navigatorHeader';
 import {navigationStyles, viewStyles} from '../../styles';
 
-export const CameraControls = ({navigation, renderButtons}) => {
+export const CameraControls = ({
+  navigation,
+  flashHandler,
+  flashMode,
+  infoHandler,
+  renderButtons,
+}) => {
   return (
     <>
       <SafeAreaView style={viewStyles.positionTop}>
@@ -23,8 +29,18 @@ export const CameraControls = ({navigation, renderButtons}) => {
 
       <View style={[viewStyles.positionRight, styles.rightPanelContainer]}>
         <View style={styles.rightPanelControls}>
-          <Icon name="flash-on" size={20} style={styles.cameraControlButton} />
-          <Icon name="info" size={20} style={styles.cameraControlButton} />
+          <Icon
+            name={flashMode ? 'flash-on' : 'flash-off'}
+            size={20}
+            style={styles.cameraControlButton}
+            onPress={flashHandler}
+          />
+          <Icon
+            name="info"
+            size={20}
+            style={styles.cameraControlButton}
+            onPress={infoHandler}
+          />
         </View>
       </View>
 

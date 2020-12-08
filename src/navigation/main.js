@@ -9,14 +9,14 @@ export const MainStack = () => {
   return (
     <>
       <Stack.Screen
-        name="Intro"
-        component={IntroScreen}
-        options={{headerLeft: null}}
-      />
-      <Stack.Screen
         name="Camera"
         component={CameraScreen}
         options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Intro"
+        component={IntroScreen}
+        options={{headerLeft: null}}
       />
       <Stack.Screen
         name="Preview"

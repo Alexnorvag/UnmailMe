@@ -2,13 +2,17 @@ import React from 'react';
 import {StyleSheet} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 
-export const Camera = ({forwardedRef}) => {
+export const Camera = ({forwardedRef, flashMode}) => {
   return (
     <RNCamera
       ref={forwardedRef}
       style={styles.preview}
       type={RNCamera.Constants.Type.back}
-      flashMode={RNCamera.Constants.FlashMode.on}
+      flashMode={
+        flashMode
+          ? RNCamera.Constants.FlashMode.on
+          : RNCamera.Constants.FlashMode.off
+      }
       captureAudio={false}
       androidCameraPermissionOptions={{
         title: 'Permission to use camera',

@@ -4,10 +4,12 @@ import BarcodeMask from 'react-native-barcode-mask';
 import {useDispatch} from 'react-redux';
 
 import {createPhoto} from '../../features/camera/cameraSlice';
-import {Camera, Preview, CameraControls} from '../../components';
+import {Camera, Preview, CameraControls, ModalWindow} from '../../components';
 import {viewStyles} from '../../styles';
 
 export const CameraScreen = ({navigation}) => {
+  const [isFlashOn, setIsFlashOn] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
 
   const dispatch = useDispatch();
@@ -16,44 +18,45 @@ export const CameraScreen = ({navigation}) => {
 
   const takePicture = async () => {
     if (cameraRef.current) {
-      const options = {quality: 0.5, base64: true};
+      const options = {
+        quality: 0.5,
+        base64: true,
+      };
       const data = await cameraRef.current.takePictureAsync(options);
 
       setImgSrc(data.uri);
     }
   };
 
-  const cancelPhoto = () => {
-    setImgSrc('');
-  };
+  const cancelPhoto = () => setImgSrc('');
+  const confirmPhoto = () => dispatch(createPhoto(imgSrc));
+  const flashHandler = () => setIsFlashOn((s) => !s);
+  const modalHandler = () => setIsModalVisible((v) => !v);
 
-  const confirmPhoto = () => {
-    dispatch(createPhoto(imgSrc));
-  };
-
-  const controls = useMemo(() => {
-    if (imgSrc) {
-      return [
-        {
-          text: 'Try Again',
-          styles: [viewStyles.buttonDanger],
-          handler: cancelPhoto,
-        },
-        {
-          text: 'Confirm',
-          styles: [viewStyles.buttonMagical],
-          handler: confirmPhoto,
-        },
-      ];
-    }
-    return [
-      {
-        text: 'Take Photo',
-        styles: [viewStyles.buttonMagical],
-        handler: takePicture,
-      },
-    ];
-  }, [imgSrc]);
+  const controls = useMemo(
+    () =>
+      imgSrc
+        ? [
+            {
+              text: 'Try Again',
+              styles: [viewStyles.buttonDanger],
+              handler: cancelPhoto,
+            },
+            {
+              text: 'Confirm',
+              styles: [viewStyles.buttonMagical],
+              handler: confirmPhoto,
+            },
+          ]
+        : [
+            {
+              text: 'Take Photo',
+              styles: [viewStyles.buttonMagical],
+              handler: takePicture,
+            },
+          ],
+    [imgSrc],
+  );
 
   const renderButtons = (buttons) => {
     return (
@@ -79,7 +82,7 @@ export const CameraScreen = ({navigation}) => {
       {imgSrc ? (
         <Preview imgSrc={imgSrc} />
       ) : (
-        <Camera forwardedRef={cameraRef} />
+        <Camera forwardedRef={cameraRef} flashMode={isFlashOn} />
       )}
 
       <BarcodeMask
@@ -96,8 +99,13 @@ export const CameraScreen = ({navigation}) => {
 
       <CameraControls
         navigation={navigation}
+        flashHandler={flashHandler}
+        infoHandler={modalHandler}
+        flashMode={isFlashOn}
         renderButtons={() => renderButtons(controls)}
       />
+
+      <ModalWindow visible={isModalVisible} onVisibilityChange={modalHandler} />
     </View>
   );
 };
