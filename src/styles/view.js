@@ -43,8 +43,6 @@ export const viewStyles = StyleSheet.create({
   },
   buttonTextDefault: {
     color: '#fff',
-    fontSize: 20,
-    fontFamily: font.type.bold,
   },
   titleBold: {
     fontFamily: font.type.bold,
@@ -107,5 +105,48 @@ export const viewStyles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+  },
+  centeredView: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    borderRadius: 15,
+  },
+  modalHeader: {
+    alignItems: 'center',
+    paddingVertical: 15,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#00000033',
+  },
+  modalContent: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  modalContentItem: {
+    padding: 10,
+    margin: 5,
+    fontSize: 18,
+  },
+  modalButton: {
+    alignItems: 'center',
+    paddingVertical: 15,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#00000033',
+  },
+  textBold: {
+    fontSize: 20,
+    fontFamily: font.type.bold,
+  },
+  textDefault: {
+    color: '#000',
+  },
+  textMagical: {
+    color: '#771f85',
   },
 });

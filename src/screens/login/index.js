@@ -100,7 +100,7 @@ export const LoginScreen = () => {
                     viewStyles.buttonMagical,
                   ]}
                   onPress={handleSubmit}>
-                  <Text style={viewStyles.buttonTextDefault}>Submit</Text>
+                  <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>Submit</Text>
                 </TouchableOpacity>
               </View>
             </View>

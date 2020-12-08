@@ -1,12 +1,12 @@
 import React from 'react';
-import {StyleSheet} from 'react-native';
 import {RNCamera} from 'react-native-camera';
+import {cameraStyles} from '../../styles';
 
 export const Camera = ({forwardedRef, flashMode}) => {
   return (
     <RNCamera
       ref={forwardedRef}
-      style={styles.preview}
+      style={cameraStyles.preview}
       type={RNCamera.Constants.Type.back}
       flashMode={
         flashMode
@@ -23,11 +23,3 @@ export const Camera = ({forwardedRef, flashMode}) => {
     />
   );
 };
-
-const styles = StyleSheet.create({
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-});

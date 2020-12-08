@@ -1,11 +1,11 @@
 import React, {useMemo, useRef, useState} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
 import {useDispatch} from 'react-redux';
 
 import {createPhoto} from '../../features/camera/cameraSlice';
 import {Camera, Preview, CameraControls, ModalWindow} from '../../components';
-import {viewStyles} from '../../styles';
+import {viewStyles, cameraStyles} from '../../styles';
 
 export const CameraScreen = ({navigation}) => {
   const [isFlashOn, setIsFlashOn] = useState(true);
@@ -19,7 +19,7 @@ export const CameraScreen = ({navigation}) => {
   const takePicture = async () => {
     if (cameraRef.current) {
       const options = {
-        quality: 0.5,
+        quality: 1,
         base64: true,
       };
       const data = await cameraRef.current.takePictureAsync(options);
@@ -70,15 +70,57 @@ export const CameraScreen = ({navigation}) => {
               viewStyles.buttonSmall,
               ...button.styles,
             ]}>
-            <Text style={viewStyles.buttonTextDefault}>{button.text}</Text>
+            <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>
+              {button.text}
+            </Text>
           </TouchableOpacity>
         ))}
       </>
     );
   };
 
+  const renderModalHeader = () => {
+    return (
+      <View style={viewStyles.modalHeader}>
+        <Text style={[viewStyles.textBold, viewStyles.textDefault]}>
+          Instructions
+        </Text>
+      </View>
+    );
+  };
+
+  const renderModalContent = () => {
+    const cameraInstructions = [
+      'Place the mail into the frame.',
+      "Click 'Take Photo' to take a photo of your mail.",
+      "Click 'Confirm' to get next steps.",
+      "Click 'Try Againg' if you failed with photo.",
+      'Click on the flashlight icon to activate it.',
+    ];
+
+    return (
+      <View style={viewStyles.modalContent}>
+        {cameraInstructions.map((instruction, index) => (
+          <Text key={index} style={viewStyles.modalContentItem}>
+            {`${index + 1}) ${instruction}`}
+          </Text>
+        ))}
+      </View>
+    );
+  };
+
+  const renderModalFooter = () => {
+    return (
+      <TouchableOpacity style={viewStyles.modalButton} onPress={modalHandler}>
+        <Text style={[viewStyles.textBold, viewStyles.textMagical]}>
+          Confirm
+        </Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    <View style={styles.container}>
+    <View style={cameraStyles.container}>
       {imgSrc ? (
         <Preview imgSrc={imgSrc} />
       ) : (
@@ -105,15 +147,13 @@ export const CameraScreen = ({navigation}) => {
         renderButtons={() => renderButtons(controls)}
       />
 
-      <ModalWindow visible={isModalVisible} onVisibilityChange={modalHandler} />
+      <ModalWindow
+        visible={isModalVisible}
+        onVisibilityChange={modalHandler}
+        renderHeader={renderModalHeader}
+        renderContent={renderModalContent}
+        renderFooter={renderModalFooter}
+      />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: 'black',
-  },
-});

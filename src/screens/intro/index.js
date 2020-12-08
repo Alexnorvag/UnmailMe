@@ -58,7 +58,7 @@ export const IntroScreen = ({navigation}) => {
           viewStyles.buttonMagical,
           viewStyles.marginVerticalMedium,
         ]}>
-        <Text style={viewStyles.buttonTextDefault}>{title}</Text>
+        <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>{title}</Text>
       </View>
     );
   };
