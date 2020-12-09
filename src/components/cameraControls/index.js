@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 
 import {HeaderMenu} from '../navigatorHeader';
 import {navigationStyles, viewStyles} from '../../styles';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export const CameraControls = ({
   navigation,
@@ -18,29 +19,24 @@ export const CameraControls = ({
       <SafeAreaView style={viewStyles.positionTop}>
         <View style={styles.topPanelControls}>
           <HeaderMenu styles={[navigationStyles.headerMenu]} />
-          <Icon
-            name="close"
-            size={14}
-            style={viewStyles.closeButton}
-            onPress={() => navigation.goBack()}
-          />
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Icon name="close" size={14} style={viewStyles.closeButton} />
+          </TouchableOpacity>
         </View>
       </SafeAreaView>
 
       <View style={[viewStyles.positionRight, styles.rightPanelContainer]}>
         <View style={styles.rightPanelControls}>
-          <Icon
-            name={flashMode ? 'flash-on' : 'flash-off'}
-            size={20}
-            style={styles.cameraControlButton}
-            onPress={flashHandler}
-          />
-          <Icon
-            name="info"
-            size={20}
-            style={styles.cameraControlButton}
-            onPress={infoHandler}
-          />
+          <TouchableOpacity onPress={flashHandler}>
+            <Icon
+              name={flashMode ? 'flash-on' : 'flash-off'}
+              size={20}
+              style={styles.cameraControlButton}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={infoHandler}>
+            <Icon name="info" size={20} style={styles.cameraControlButton} />
+          </TouchableOpacity>
         </View>
       </View>
 

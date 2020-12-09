@@ -38,7 +38,7 @@ export const RootNavigation = () => {
             headerTitle: () => (
               <HeaderTitle styles={navigationStyles.headerTitle} />
             ),
-            headerStyle: navigationStyles.haederStyle,
+            headerStyle: navigationStyles.headerStyle,
             headerTitleContainerStyle:
               navigationStyles.headerTitleContainerStyle,
             headerLeft: () => (

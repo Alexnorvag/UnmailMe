@@ -8,6 +8,7 @@ import {
   PreviewScreen,
   HomeScreen,
 } from '../screens';
+import { navigationStyles } from '../styles';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +28,13 @@ export const MainStack = () => {
       <Stack.Screen
         name="Unmail"
         component={UnmailScreen}
-        options={{headerLeft: null}}
+        options={{
+          headerTitle: null,
+          headerStyle: {
+            backgroundColor: '#771F85',
+            ...navigationStyles.headerStyle
+          },
+        }}
       />
       <Stack.Screen
         name="Preview"

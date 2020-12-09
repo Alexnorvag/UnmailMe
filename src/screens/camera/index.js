@@ -29,7 +29,10 @@ export const CameraScreen = ({navigation}) => {
   };
 
   const cancelPhoto = () => setImgSrc('');
-  const confirmPhoto = () => dispatch(createPhoto(imgSrc));
+  const confirmPhoto = () => {
+    dispatch(createPhoto(imgSrc));
+    navigation.navigate('Unmail');
+  };
   const flashHandler = () => setIsFlashOn((s) => !s);
   const modalHandler = () => setIsModalVisible((v) => !v);
 
