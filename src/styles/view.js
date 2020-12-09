@@ -149,4 +149,7 @@ export const viewStyles = StyleSheet.create({
   textMagical: {
     color: '#771f85',
   },
+  textLight: {
+    color: '#fff',
+  },
 });

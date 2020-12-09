@@ -14,6 +14,7 @@ import {useDispatch} from 'react-redux';
 import {viewStyles} from '../../styles';
 import {loginSchema} from '../../validation';
 import {login} from '../../features/signin/signinSlice';
+import {BackgroundIcon} from '../../assets/svg';
 
 export const LoginScreen = () => {
   const [isSecure, setIsSecure] = useState(true);
@@ -37,6 +38,9 @@ export const LoginScreen = () => {
   return (
     <View style={viewStyles.container}>
       <View style={styles.loginContainer}>
+        <View style={[viewStyles.imageContainerBackground]}>
+          <BackgroundIcon />
+        </View>
         <Formik
           initialValues={{email: '', password: ''}}
           validationSchema={loginSchema}
@@ -100,7 +104,10 @@ export const LoginScreen = () => {
                     viewStyles.buttonMagical,
                   ]}
                   onPress={handleSubmit}>
-                  <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>Submit</Text>
+                  <Text
+                    style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>
+                    Submit
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
