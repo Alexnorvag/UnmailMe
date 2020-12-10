@@ -22,8 +22,8 @@ export const CameraScreen = ({navigation}) => {
       const options = {
         quality: 1,
         base64: true,
-        // forceUpOrientation: true,
         orientation: isPortrait ? 'portrait' : 'landscapeLeft',
+        // forceUpOrientation: true,
         // fixOrientation: true,
       };
       const data = await cameraRef.current.takePictureAsync(options);
@@ -34,6 +34,7 @@ export const CameraScreen = ({navigation}) => {
 
   const confirmPhoto = () => {
     dispatch(createPhoto(imgSrc));
+    setImgSrc('');
     navigation.navigate('Unmail');
   };
 

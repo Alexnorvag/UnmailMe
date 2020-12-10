@@ -1,4 +1,6 @@
 import {StyleSheet} from 'react-native';
+
+import {SCREEN_WIDTH, SCREEN_HEIGHT} from '../constants';
 import font from '../themes/fonts';
 
 export const viewStyles = StyleSheet.create({
@@ -152,4 +154,42 @@ export const viewStyles = StyleSheet.create({
   textLight: {
     color: '#fff',
   },
+  adaptiveContainerVertical: {
+    height: (SCREEN_WIDTH * SCREEN_WIDTH) / SCREEN_HEIGHT,
+    width: SCREEN_WIDTH,
+  },
+  adaptiveContainerHorizontal: {height: SCREEN_HEIGHT, width: SCREEN_WIDTH},
+  imageContainerVertical: {
+    height: SCREEN_WIDTH,
+    width: (SCREEN_WIDTH * SCREEN_WIDTH) / SCREEN_HEIGHT,
+    transform: [
+      {rotate: '-90deg'},
+      {
+        translateY:
+          (SCREEN_WIDTH * ((SCREEN_HEIGHT - SCREEN_WIDTH) / SCREEN_HEIGHT)) / 2,
+      },
+      {
+        translateX:
+          (SCREEN_WIDTH * ((SCREEN_HEIGHT - SCREEN_WIDTH) / SCREEN_HEIGHT)) / 2,
+      },
+    ],
+  },
+  imageContainerHorizontal: {flex: 1, flexDirection: 'row'},
+  image: {
+    flex: 1,
+    maxWidth: '100%',
+  },
+  roundedSmall: {
+    borderRadius: 20,
+  },
+  paddingSmall: {
+    padding: 15,
+  },
+  paddingHorizontalSmall: {
+    paddingRight: 15,
+  },
+  backgroundMagical: {
+    backgroundColor: '#771F85',
+  },
+  imagePlaceholder: {flex: 1, backgroundColor: '#f7f7f7'},
 });
