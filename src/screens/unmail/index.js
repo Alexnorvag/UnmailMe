@@ -17,6 +17,10 @@ export const UnmailScreen = ({navigation}) => {
     navigation.navigate('Camera');
   };
 
+  // const openPhotoPreview = () => {
+  //   navigation.navigate('Camera');
+  // };
+
   const renderImageControls = () => {
     return (
       <TouchableOpacity
@@ -29,7 +33,7 @@ export const UnmailScreen = ({navigation}) => {
 
   return (
     <View style={[viewStyles.container, viewStyles.backgroundMagical]}>
-      <ScrollView>
+      <ScrollView style={{backgroundColor: 'yellow'}}>
         <Text style={[viewStyles.titleBold, viewStyles.textLight]}>
           Almost done
         </Text>
@@ -38,8 +42,45 @@ export const UnmailScreen = ({navigation}) => {
           post office.
         </Text>
 
-        <ImageView imgSrc={src} renderControls={renderImageControls} />
+        <ImageView
+          imgSrc={src}
+          renderControls={renderImageControls}
+          // imageHandler={openPhotoPreview}
+        />
       </ScrollView>
+      <View
+        style={{
+          // flex: 1,
+          // flexDirection: 'column',
+          // height: '100%',
+          width: '100%',
+          // flex: 1,
+          backgroundColor: 'black',
+        }}>
+        {/* <View
+            style={{
+              flex: 1,
+              flexDirection: 'row',
+              backgroundColor: 'white',
+            }}>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'column',
+                justifyContent: 'center',
+              }}>
+              <TouchableOpacity style={{backgroundColor: 'red'}}>
+                <Text style={{backgroundColor: 'violet'}}>Unsubscribe</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{backgroundColor: 'red'}}>
+                <Text style={{backgroundColor: 'violet'}}>Switch to Email</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={{backgroundColor: 'red'}}>
+                <Text style={{backgroundColor: 'violet'}}>Wrong Address</Text>
+              </TouchableOpacity>
+            </View>
+          </View> */}
+      </View>
     </View>
   );
 };
