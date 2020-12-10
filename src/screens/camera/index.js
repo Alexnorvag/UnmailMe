@@ -3,6 +3,7 @@ import {Text, View, TouchableOpacity} from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
 import {useDispatch} from 'react-redux';
 
+import {isPortrait} from '../../constants';
 import {createPhoto} from '../../features/camera/cameraSlice';
 import {Camera, Preview, CameraControls, ModalWindow} from '../../components';
 import {viewStyles, cameraStyles} from '../../styles';
@@ -21,9 +22,9 @@ export const CameraScreen = ({navigation}) => {
       const options = {
         quality: 1,
         base64: true,
-        forceUpOrientation: true,
-        orientation: 'portrait',
-        fixOrientation: true,
+        // forceUpOrientation: true,
+        orientation: isPortrait ? 'portrait' : 'landscapeLeft',
+        // fixOrientation: true,
       };
       const data = await cameraRef.current.takePictureAsync(options);
       console.log('[IMAGE] -> ', data.uri);

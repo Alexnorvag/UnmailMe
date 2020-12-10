@@ -1,52 +1,35 @@
-import React, {useMemo} from 'react';
-import {Image, View} from 'react-native';
+import React from 'react';
+import {Image, StyleSheet, View} from 'react-native';
 
 import {isPortrait, SCREEN_HEIGHT, SCREEN_WIDTH} from '../../constants';
+import {viewStyles} from '../../styles';
 
 export const ImageView = ({imgSrc}) => {
   const width = SCREEN_WIDTH;
   const height = SCREEN_HEIGHT;
-  //   const width = useMemo(() => (isPortrait ? SCREEN_WIDTH : SCREEN_HEIGHT), [
-  //     isPortrait,
-  //   ]);
-
-  //   const height = useMemo(() => (isPortrait ? SCREEN_HEIGHT : SCREEN_WIDTH), [
-  //     isPortrait,
-  //   ]);
 
   console.log('SCREEN_HEIGHT: ', SCREEN_HEIGHT);
   console.log('SCREEN_WIDTH: ', SCREEN_WIDTH);
   console.log('height: ', height);
   console.log('width: ', width);
+
   return (
     <View
-      style={{
-        height: (width * width) / height,
-        width: width,
-        marginTop: 10,
-      }}>
+      style={[
+        isPortrait
+          ? styles.adaptiveContainerVertical
+          : styles.adaptiveContainerHorizontal,
+        viewStyles.marginVerticalMedium,
+      ]}>
       <View
-        style={{
-          padding: 15,
-          width: (width * width) / height,
-          height: width,
-          backgroundColor: 'blue',
-          transform: [
-            {rotate: '-90deg'},
-            {
-              translateY: (width * ((height - width) / height)) / 2,
-            },
-            {
-              translateX: (width * ((height - width) / height)) / 2,
-            },
-          ],
-        }}>
+        style={[
+          isPortrait
+            ? styles.imageContainerVertical
+            : styles.imageContainerHorizontal,
+          styles.paddingSmall,
+        ]}>
         <Image
-          style={{
-            flex: 1,
-            maxWidth: '100%',
-            borderRadius: 20,
-          }}
+          style={[styles.image, styles.roundedSmall]}
           source={{
             uri: imgSrc,
           }}
@@ -55,3 +38,37 @@ export const ImageView = ({imgSrc}) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  adaptiveContainerVertical: {
+    height: (SCREEN_WIDTH * SCREEN_WIDTH) / SCREEN_HEIGHT,
+    width: SCREEN_WIDTH,
+  },
+  adaptiveContainerHorizontal: {height: SCREEN_HEIGHT, width: SCREEN_WIDTH},
+  imageContainerVertical: {
+    height: SCREEN_WIDTH,
+    width: (SCREEN_WIDTH * SCREEN_WIDTH) / SCREEN_HEIGHT,
+    transform: [
+      {rotate: '-90deg'},
+      {
+        translateY:
+          (SCREEN_WIDTH * ((SCREEN_HEIGHT - SCREEN_WIDTH) / SCREEN_HEIGHT)) / 2,
+      },
+      {
+        translateX:
+          (SCREEN_WIDTH * ((SCREEN_HEIGHT - SCREEN_WIDTH) / SCREEN_HEIGHT)) / 2,
+      },
+    ],
+  },
+  imageContainerHorizontal: {flex: 1, flexDirection: 'row'},
+  image: {
+    flex: 1,
+    maxWidth: '100%',
+  },
+  roundedSmall: {
+    borderRadius: 20,
+  },
+  paddingSmall: {
+    padding: 15,
+  },
+});
