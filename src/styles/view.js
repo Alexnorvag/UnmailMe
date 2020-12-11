@@ -146,6 +146,13 @@ export const viewStyles = StyleSheet.create({
     fontFamily: font.type.bold,
   },
   textDefault: {
+    fontSize: 14,
+    fontFamily: font.type.secondary,
+  },
+  textDarkGray: {
+    color: '#474747',
+  },
+  textDark: {
     color: '#000',
   },
   textMagical: {
