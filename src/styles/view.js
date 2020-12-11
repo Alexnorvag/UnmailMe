@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import font from '../themes/fonts';
 
 export const viewStyles = StyleSheet.create({
   container: {
@@ -34,23 +35,36 @@ export const viewStyles = StyleSheet.create({
   buttonTextDefault: {
     color: '#fff',
     fontSize: 20,
-    fontWeight: '700',
+    fontFamily: font.type.bold,
   },
   titleBold: {
-    fontWeight: '700',
+    fontFamily: font.type.bold,
     fontSize: 27,
     textAlign: 'center',
-    paddingHorizontal: '15%',
+    marginHorizontal: '15%',
   },
   description: {
-    fontWeight: '400',
+    fontFamily: font.type.primary,
     fontSize: 18,
     textAlign: 'center',
-    paddingHorizontal: '15%',
-    paddingVertical: '5%',
+    marginHorizontal: '15%',
   },
   marginVerticalMedium: {
-    marginTop: 20,
-    marginBottom: 10,
+    marginTop: '2%',
+    marginBottom: '1%',
+  },
+  imageContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    aspectRatio: 1,
+  },
+  imageContainerBackground: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

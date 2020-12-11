@@ -1,4 +1,5 @@
-import {Platform, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
+import font from '../themes/fonts'
 
 export const navigationStyles = StyleSheet.create({
   haederStyle: {
@@ -18,15 +19,7 @@ export const navigationStyles = StyleSheet.create({
     paddingTop: 10,
   },
   headerTitle: {
-    ...Platform.select({
-      ios: {
-        fontWeight: '300',
-      },
-      android: {
-        fontFamily: 'Roboto-Light',
-        // fontFamily: 'sans-serif-light',
-      },
-    }),
+    fontFamily: font.type.light,
     color: 'rgba(0, 0, 0, 0.82)',
   },
 });
