@@ -22,20 +22,27 @@ export const viewStyles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    height: 56,
-    width: '60%',
     borderRadius: 16,
     alignSelf: 'center',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  buttonSmall: {
+    height: 50,
+    width: '45%',
+  },
+  buttonMedium: {
+    height: 56,
+    width: '60%',
+  },
   buttonMagical: {
     backgroundColor: '#771f85',
   },
+  buttonDanger: {
+    backgroundColor: '#9D2222',
+  },
   buttonTextDefault: {
     color: '#fff',
-    fontSize: 20,
-    fontFamily: font.type.bold,
   },
   titleBold: {
     fontFamily: font.type.bold,
@@ -66,5 +73,80 @@ export const viewStyles = StyleSheet.create({
     bottom: 0,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  positionTop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+  positionRight: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+  },
+  positionBottom: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+  },
+  closeButton: {
+    color: '#fff',
+    backgroundColor: '#000',
+    marginRight: '5%',
+    padding: 10,
+    borderRadius: 17,
+    overflow: 'hidden',
+    alignSelf: 'center',
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  centeredView: {
+    flex: 0,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'white',
+    borderRadius: 15,
+  },
+  modalHeader: {
+    alignItems: 'center',
+    paddingVertical: 15,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#00000033',
+  },
+  modalContent: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+  },
+  modalContentItem: {
+    padding: 10,
+    margin: 5,
+    fontSize: 18,
+  },
+  modalButton: {
+    alignItems: 'center',
+    paddingVertical: 15,
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#00000033',
+  },
+  textBold: {
+    fontSize: 20,
+    fontFamily: font.type.bold,
+  },
+  textDefault: {
+    color: '#000',
+  },
+  textMagical: {
+    color: '#771f85',
   },
 });

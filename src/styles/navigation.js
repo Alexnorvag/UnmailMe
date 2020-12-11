@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import font from '../themes/fonts'
 
 export const navigationStyles = StyleSheet.create({
-  haederStyle: {
+  headerStyle: {
     elevation: 0,
     shadowColor: 'transparent',
   },
