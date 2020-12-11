@@ -8,7 +8,7 @@ export const viewStyles = StyleSheet.create({
   },
   input: {
     height: 50,
-    fontSize: 18,
+    fontSize: 17,
     padding: 15,
     marginVertical: 10,
     borderBottomWidth: StyleSheet.hairlineWidth,

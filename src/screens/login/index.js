@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   Text,
   TextInput,
@@ -14,8 +15,24 @@ import {viewStyles} from '../../styles';
 import {loginSchema} from '../../validation';
 import {login} from '../../features/signin/signinSlice';
 
-export const LoginScreen = ({navigation}) => {
+export const LoginScreen = () => {
+  const [isSecure, setIsSecure] = useState(true);
+
+  const inputElementRef = useRef({});
+
   const dispatch = useDispatch();
+
+  const changePasswordVisibility = () => {
+    setIsSecure((s) => !s);
+  };
+
+  useEffect(() => {
+    inputElementRef.current.setNativeProps({
+      style: {
+        fontFamily: 'Roboto-Regular',
+      },
+    });
+  }, []);
 
   return (
     <View style={viewStyles.container}>
@@ -38,28 +55,43 @@ export const LoginScreen = ({navigation}) => {
             <View style={{flex: 1, width: '100%'}}>
               <View style={{flex: 1, justifyContent: 'space-evenly'}}>
                 <View>
-                  <TextInput
-                    autoCapitalize="none"
-                    placeholder="Email"
-                    style={viewStyles.input}
-                    onChangeText={handleChange('email')}
-                    onBlur={handleBlur('email')}
-                    value={values.email}
-                  />
-                  <Text style={viewStyles.errorValidationText}>
-                    {touched.email && errors.email}
-                  </Text>
-                  <TextInput
-                    autoCapitalize="none"
-                    placeholder="Password"
-                    style={viewStyles.input}
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
-                  />
-                  <Text style={viewStyles.errorValidationText}>
-                    {touched.password && errors.password}
-                  </Text>
+                  <View>
+                    <TextInput
+                      autoCapitalize="none"
+                      placeholder="Email"
+                      style={viewStyles.input}
+                      onChangeText={handleChange('email')}
+                      onBlur={handleBlur('email')}
+                      value={values.email}
+                    />
+                    <Text style={viewStyles.errorValidationText}>
+                      {touched.email && errors.email}
+                    </Text>
+                  </View>
+                  <View>
+                    <TextInput
+                      ref={inputElementRef}
+                      autoCapitalize="none"
+                      placeholder="Password"
+                      style={viewStyles.input}
+                      onChangeText={handleChange('password')}
+                      onBlur={handleBlur('password')}
+                      value={values.password}
+                      secureTextEntry={isSecure}
+                    />
+                    <TouchableOpacity
+                      onPress={changePasswordVisibility}
+                      style={styles.searchIcon}>
+                      <Icon
+                        name={isSecure ? 'eye' : 'eye-slash'}
+                        size={24}
+                        color="#000"
+                      />
+                    </TouchableOpacity>
+                    <Text style={viewStyles.errorValidationText}>
+                      {touched.password && errors.password}
+                    </Text>
+                  </View>
                 </View>
                 <TouchableOpacity
                   style={[viewStyles.button, viewStyles.buttonMagical]}
@@ -76,16 +108,18 @@ export const LoginScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   loginContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     padding: 20,
     marginBottom: getStatusBarHeight(),
+  },
+  searchIcon: {
+    position: 'absolute',
+    top: 24,
+    right: 24,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
