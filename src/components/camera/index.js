@@ -1,5 +1,6 @@
 import React from 'react';
 import {RNCamera} from 'react-native-camera';
+
 import {cameraStyles} from '../../styles';
 
 export const Camera = ({forwardedRef, flashMode}) => {

@@ -1,13 +1,16 @@
 import React, {useMemo, useRef, useState} from 'react';
-import {Text, View, TouchableOpacity, FlatList, StyleSheet} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
-import {useDispatch} from 'react-redux';
+import {useDispatch /* , useSelector */} from 'react-redux';
 
+import {isPortrait} from '../../constants';
 import {createPhoto} from '../../features/camera/cameraSlice';
 import {Camera, Preview, CameraControls, ModalWindow} from '../../components';
 import {viewStyles, cameraStyles} from '../../styles';
 
 export const CameraScreen = ({navigation}) => {
+  // const {src} = useSelector((state) => state.camera);
+
   const [isFlashOn, setIsFlashOn] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
@@ -21,18 +24,23 @@ export const CameraScreen = ({navigation}) => {
       const options = {
         quality: 1,
         base64: true,
+        orientation: isPortrait ? 'portrait' : 'landscapeLeft',
+        // forceUpOrientation: true,
+        // fixOrientation: true,
       };
       const data = await cameraRef.current.takePictureAsync(options);
-
+      console.log('[IMAGE] -> ', data.uri);
       setImgSrc(data.uri);
     }
   };
 
-  const cancelPhoto = () => setImgSrc('');
   const confirmPhoto = () => {
     dispatch(createPhoto(imgSrc));
     navigation.navigate('Unmail');
+    setImgSrc('');
   };
+
+  const cancelPhoto = () => setImgSrc('');
   const flashHandler = () => setIsFlashOn((s) => !s);
   const modalHandler = () => setIsModalVisible((v) => !v);
 

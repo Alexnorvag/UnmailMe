@@ -8,18 +8,13 @@ import {
   PreviewScreen,
   HomeScreen,
 } from '../screens';
-import { navigationStyles } from '../styles';
+import {navigationStyles} from '../styles';
 
 const Stack = createStackNavigator();
 
 export const MainStack = () => {
   return (
     <>
-      <Stack.Screen
-        name="Intro"
-        component={IntroScreen}
-        options={{headerLeft: null}}
-      />
       <Stack.Screen
         name="Camera"
         component={CameraScreen}
@@ -32,9 +27,14 @@ export const MainStack = () => {
           headerTitle: null,
           headerStyle: {
             backgroundColor: '#771F85',
-            ...navigationStyles.headerStyle
+            ...navigationStyles.headerStyle,
           },
         }}
+      />
+      <Stack.Screen
+        name="Intro"
+        component={IntroScreen}
+        options={{headerLeft: null}}
       />
       <Stack.Screen
         name="Preview"

@@ -12,7 +12,6 @@ export const slice = createSlice({
   initialState,
   reducers: {
     createPhoto: (state, action) => {
-      console.log('[CREATE PHOTO] => action: ', action);
       state.src = action.payload;
     },
     deletePhoto: (state) => {
