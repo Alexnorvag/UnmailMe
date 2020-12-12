@@ -93,7 +93,7 @@ export const CameraScreen = ({navigation}) => {
   const renderModalHeader = () => {
     return (
       <View style={viewStyles.modalHeader}>
-        <Text style={[viewStyles.textBold, viewStyles.textDefault]}>
+        <Text style={[viewStyles.textBold, viewStyles.textDark]}>
           Instructions
         </Text>
       </View>
