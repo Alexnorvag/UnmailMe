@@ -13,7 +13,7 @@ export const ImageView = ({imgSrc, renderControls}) => {
         isPortrait
           ? viewStyles.adaptiveContainerVertical
           : viewStyles.adaptiveContainerHorizontal,
-        viewStyles.marginVerticalMedium,
+        viewStyles.marginVerticalSmall,
       ]}>
       <TouchableOpacity
         onPress={() => console.log('go to preview')}

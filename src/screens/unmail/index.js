@@ -1,11 +1,38 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  Pressable,
+} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {ImageView} from '../../components';
 import {deletePhoto} from '../../features/camera/cameraSlice';
-import {viewStyles} from '../../styles';
+import {unmailStyles, viewStyles} from '../../styles';
+
+const unmailOptions = [
+  {
+    title: 'Unsubscribe',
+    text: 'You won’t recieve this unwanted mail.',
+    icon: 'mail-outline',
+    iconStyles: [unmailStyles.iconContainer, unmailStyles.iconDanger],
+  },
+  {
+    title: 'Switch to Email',
+    text: 'Go paperless by recieving email instead.',
+    icon: 'airplanemode-active',
+    iconStyles: [unmailStyles.iconContainer, unmailStyles.iconFresh],
+  },
+  {
+    title: 'Wrong Address',
+    text: 'Let sender know your updated address.',
+    icon: 'wrong-location',
+    iconStyles: [unmailStyles.iconContainer, unmailStyles.iconSky],
+  },
+];
 
 export const UnmailScreen = ({navigation}) => {
   const {src} = useSelector((state) => state.camera);
@@ -24,108 +51,42 @@ export const UnmailScreen = ({navigation}) => {
   const renderImageControls = () => {
     return (
       <TouchableOpacity
-        style={[viewStyles.positionRight, viewStyles.paddingHorizontalSmall]}
+        style={[viewStyles.paddingHorizontalSmall, viewStyles.positionTopRight]}
         onPress={deletePreviewPhoto}>
         <Icon name="close" size={14} style={viewStyles.closeButton} />
       </TouchableOpacity>
     );
   };
 
-  const unmailOptions = [
-    {
-      title: 'Unsubscribe',
-      text: 'You won’t recieve this unwanted mail.',
-      icon: 'mail-outline',
-      iconStyles: [
-        {
-          backgroundColor: 'rgba(211, 40, 40, 0.2)',
-          color: '#D32828',
-          padding: 10,
-          borderRadius: 12,
-        },
-      ],
-    },
-    {
-      title: 'Switch to Email',
-      text: 'Go paperless by recieving email instead.',
-      icon: 'airplanemode-active',
-      iconStyles: [
-        {
-          backgroundColor: 'rgba(32, 169, 91, 0.2)',
-          color: '#20A95B',
-          padding: 10,
-          borderRadius: 12,
-        },
-      ],
-    },
-    {
-      title: 'Wrong Address',
-      text: 'Let sender know your updated address.',
-      icon: 'wrong-location',
-      iconStyles: [
-        {
-          backgroundColor: 'rgba(40, 89, 162, 0.2)',
-          color: '#2859A1',
-          padding: 10,
-          borderRadius: 12,
-        },
-      ],
-    },
-  ];
-
   const renderUnmailMenuItem = (item) => {
     return (
-      <TouchableOpacity
-        style={{
-          flex: 1,
-          // backgroundColor: 'red',
-          borderRadius: 16,
-          // overflow: 'hidden',
-          marginVertical: 5,
-          padding: 15,
-        }}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'row' /* , backgroundColor: 'red' */,
-          }}>
-          <View
-            style={{
-              flex: 2,
-              alignItems: 'center',
-              justifyContent: 'center',
-              // backgroundColor: 'white',
-            }}>
+      <Pressable
+        onPress={() => console.log('selected: ', item.title)}
+        style={({pressed}) => [
+          unmailStyles.menuContainer,
+          unmailStyles.smallIndents,
+          viewStyles.backgroundLight,
+          viewStyles.roundedSmall,
+          pressed && viewStyles.boxShadowMedium,
+        ]}>
+        <View style={viewStyles.rowContainer}>
+          <View style={unmailStyles.menuItemIcon}>
             <Icon name={item.icon} size={28} style={item.iconStyles} />
           </View>
-          <View
-            style={{
-              flex: 6,
-              justifyContent: 'center',
-              // backgroundColor: 'white',
-            }}>
-            <Text
-              style={[/* {backgroundColor: 'orange'}, */ viewStyles.textBold]}>
-              {item.title}
-            </Text>
-            <Text
-              style={[
-                // {backgroundColor: 'silver'},
-                viewStyles.textDefault,
-                viewStyles.textDarkGray,
-              ]}>
+          <View style={unmailStyles.menuItemDescription}>
+            <Text style={viewStyles.textBold}>{item.title}</Text>
+            <Text style={[viewStyles.textDefault, viewStyles.textDarkGray]}>
               {item.text}
             </Text>
           </View>
         </View>
-      </TouchableOpacity>
+      </Pressable>
     );
   };
 
   return (
     <View style={[viewStyles.container, viewStyles.backgroundMagical]}>
-      <ScrollView
-        contentContainerStyle={{flexGrow: 1, justifyContent: 'space-between'}}>
+      <ScrollView contentContainerStyle={unmailStyles.scrollContainer}>
         <View>
           <Text style={[viewStyles.titleBold, viewStyles.textLight]}>
             Almost done
@@ -143,27 +104,17 @@ export const UnmailScreen = ({navigation}) => {
         </View>
 
         <View
-          style={{
-            flex: 1,
-            backgroundColor: 'white',
-            overflow: 'hidden',
-            paddingHorizontal: 10,
-            paddingTop: 15,
-            borderTopLeftRadius: 30,
-            borderTopRightRadius: 30,
-          }}>
-          <View
-            style={{
-              flex: 1,
-              // backgroundColor: 'black',
-              padding: 10,
-            }}>
-            {unmailOptions.map((option, index) => (
-              <React.Fragment key={index}>
-                {renderUnmailMenuItem(option)}
-              </React.Fragment>
-            ))}
-          </View>
+          style={[
+            unmailStyles.menuContainer,
+            viewStyles.roundedTopMedium,
+            viewStyles.paddingMedium,
+            viewStyles.backgroundLight,
+          ]}>
+          {unmailOptions.map((option, index) => (
+            <React.Fragment key={index}>
+              {renderUnmailMenuItem(option)}
+            </React.Fragment>
+          ))}
         </View>
       </ScrollView>
     </View>

@@ -9,6 +9,10 @@ export const viewStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  rowContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
   input: {
     height: 50,
     fontSize: 17,
@@ -58,9 +62,13 @@ export const viewStyles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: '15%',
   },
-  marginVerticalMedium: {
+  marginVerticalSmall: {
     marginTop: '2%',
     marginBottom: '1%',
+  },
+  paddingMedium: {
+    paddingHorizontal: '4%',
+    paddingVertical: '6%',
   },
   imageContainer: {
     alignItems: 'center',
@@ -92,6 +100,10 @@ export const viewStyles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
     left: 0,
+    right: 0,
+  },
+  positionTopRight: {
+    position: 'absolute',
     right: 0,
   },
   closeButton: {
@@ -186,6 +198,10 @@ export const viewStyles = StyleSheet.create({
     flex: 1,
     maxWidth: '100%',
   },
+  roundedTopMedium: {
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+  },
   roundedSmall: {
     borderRadius: 20,
   },
@@ -198,5 +214,19 @@ export const viewStyles = StyleSheet.create({
   backgroundMagical: {
     backgroundColor: '#771F85',
   },
+  backgroundLight: {
+    backgroundColor: '#fff',
+  },
   imagePlaceholder: {flex: 1, backgroundColor: '#f7f7f7'},
+  boxShadowMedium: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 12,
+    },
+    shadowOpacity: 0.58,
+    shadowRadius: 16.0,
+
+    elevation: 24,
+  },
 });
