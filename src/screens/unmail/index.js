@@ -44,9 +44,11 @@ export const UnmailScreen = ({navigation}) => {
     navigation.navigate('Camera');
   };
 
-  // const openPhotoPreview = () => {
-  //   navigation.navigate('Camera');
-  // };
+  const openImagePreview = () => {
+    navigation.navigate('Camera', {
+      unmailSrc: src,
+    });
+  };
 
   const renderImageControls = () => {
     return (
@@ -99,7 +101,7 @@ export const UnmailScreen = ({navigation}) => {
           <ImageView
             imgSrc={src}
             renderControls={renderImageControls}
-            // imageHandler={openPhotoPreview}
+            imageHandler={openImagePreview}
           />
         </View>
 

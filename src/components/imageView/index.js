@@ -4,7 +4,7 @@ import {Image, View, TouchableOpacity} from 'react-native';
 import {isPortrait} from '../../constants';
 import {viewStyles} from '../../styles';
 
-export const ImageView = ({imgSrc, renderControls}) => {
+export const ImageView = ({imgSrc, renderControls, imageHandler}) => {
   console.log('imgSrc: ', imgSrc);
 
   return (
@@ -16,7 +16,8 @@ export const ImageView = ({imgSrc, renderControls}) => {
         viewStyles.marginVerticalSmall,
       ]}>
       <TouchableOpacity
-        onPress={() => console.log('go to preview')}
+        onPress={imageHandler}
+        // onPress={() => console.log('go to preview')}
         style={[
           isPortrait
             ? viewStyles.imageContainerVertical

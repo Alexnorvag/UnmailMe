@@ -1,19 +1,19 @@
-import React, {useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
-import {useDispatch /* , useSelector */} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {isPortrait} from '../../constants';
 import {createPhoto} from '../../features/camera/cameraSlice';
 import {Camera, Preview, CameraControls, ModalWindow} from '../../components';
 import {viewStyles, cameraStyles} from '../../styles';
 
-export const CameraScreen = ({navigation}) => {
-  // const {src} = useSelector((state) => state.camera);
-
+export const CameraScreen = ({route, navigation}) => {
   const [isFlashOn, setIsFlashOn] = useState(true);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
+
+  // const {src} = useSelector((state) => state.camera);
 
   const dispatch = useDispatch();
 
@@ -129,6 +129,10 @@ export const CameraScreen = ({navigation}) => {
       </TouchableOpacity>
     );
   };
+
+  useEffect(() => {
+    setImgSrc((s) => s || route.params?.unmailSrc);
+  }, [route.params]);
 
   return (
     <View style={cameraStyles.container}>
