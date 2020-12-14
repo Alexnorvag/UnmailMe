@@ -5,34 +5,12 @@ import {
   View,
   ScrollView,
   TouchableOpacity,
-  Pressable,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {ImageView} from '../../components';
+import {ImageView, UnmailMenu} from '../../components';
 import {deletePhoto} from '../../features/camera/cameraSlice';
 import {unmailStyles, viewStyles} from '../../styles';
-
-const unmailOptions = [
-  {
-    title: 'Unsubscribe',
-    text: 'You won’t recieve this unwanted mail.',
-    icon: 'mail-outline',
-    iconStyles: [unmailStyles.iconContainer, unmailStyles.iconDanger],
-  },
-  {
-    title: 'Switch to Email',
-    text: 'Go paperless by recieving email instead.',
-    icon: 'airplanemode-active',
-    iconStyles: [unmailStyles.iconContainer, unmailStyles.iconFresh],
-  },
-  {
-    title: 'Wrong Address',
-    text: 'Let sender know your updated address.',
-    icon: 'wrong-location',
-    iconStyles: [unmailStyles.iconContainer, unmailStyles.iconSky],
-  },
-];
 
 export const UnmailScreen = ({navigation}) => {
   const {src} = useSelector((state) => state.camera);
@@ -60,31 +38,6 @@ export const UnmailScreen = ({navigation}) => {
     );
   };
 
-  const renderUnmailMenuItem = (item) => {
-    return (
-      <Pressable
-        onPress={() => console.log('selected: ', item.title)}
-        style={({pressed}) => [
-          unmailStyles.menuContainer,
-          unmailStyles.smallIndents,
-          viewStyles.backgroundLight,
-          viewStyles.roundedSmall,
-          pressed && viewStyles.boxShadowMedium,
-        ]}>
-        <View style={viewStyles.rowContainer}>
-          <View style={unmailStyles.menuItemIcon}>
-            <Icon name={item.icon} size={28} style={item.iconStyles} />
-          </View>
-          <View style={unmailStyles.menuItemDescription}>
-            <Text style={viewStyles.textBold}>{item.title}</Text>
-            <Text style={[viewStyles.textDefault, viewStyles.textDarkGray]}>
-              {item.text}
-            </Text>
-          </View>
-        </View>
-      </Pressable>
-    );
-  };
 
   return (
     <View style={[viewStyles.container, viewStyles.backgroundMagical]}>
@@ -105,7 +58,8 @@ export const UnmailScreen = ({navigation}) => {
           />
         </View>
 
-        <View
+        <UnmailMenu />
+        {/* <View
           style={[
             unmailStyles.menuContainer,
             viewStyles.roundedTopMedium,
@@ -117,7 +71,7 @@ export const UnmailScreen = ({navigation}) => {
               {renderUnmailMenuItem(option)}
             </React.Fragment>
           ))}
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   );

@@ -5,8 +5,6 @@ import {isPortrait} from '../../constants';
 import {viewStyles} from '../../styles';
 
 export const ImageView = ({imgSrc, renderControls, imageHandler}) => {
-  console.log('imgSrc: ', imgSrc);
-
   return (
     <View
       style={[
@@ -17,7 +15,6 @@ export const ImageView = ({imgSrc, renderControls, imageHandler}) => {
       ]}>
       <TouchableOpacity
         onPress={imageHandler}
-        // onPress={() => console.log('go to preview')}
         style={[
           isPortrait
             ? viewStyles.imageContainerVertical

@@ -13,8 +13,6 @@ export const CameraScreen = ({route, navigation}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [imgSrc, setImgSrc] = useState('');
 
-  // const {src} = useSelector((state) => state.camera);
-
   const dispatch = useDispatch();
 
   const cameraRef = useRef(null);
@@ -29,7 +27,7 @@ export const CameraScreen = ({route, navigation}) => {
         // fixOrientation: true,
       };
       const data = await cameraRef.current.takePictureAsync(options);
-      console.log('[IMAGE] -> ', data.uri);
+      
       setImgSrc(data.uri);
     }
   };
