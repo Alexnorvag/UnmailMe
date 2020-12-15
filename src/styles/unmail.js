@@ -16,7 +16,7 @@ export const unmailStyles = StyleSheet.create({
   },
   menuItemDescription: {
     flex: 8,
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
   },
   smallIndents: {
     marginVertical: 5,
@@ -25,6 +25,7 @@ export const unmailStyles = StyleSheet.create({
   iconContainer: {
     padding: 10,
     borderRadius: 12,
+    overflow: 'hidden',
   },
   iconDanger: {
     backgroundColor: 'rgba(211, 40, 40, 0.2)',

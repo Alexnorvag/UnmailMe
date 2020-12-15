@@ -219,6 +219,7 @@ export const viewStyles = StyleSheet.create({
   },
   imagePlaceholder: {flex: 1, backgroundColor: '#f7f7f7'},
   boxShadowMedium: {
+    zIndex: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
