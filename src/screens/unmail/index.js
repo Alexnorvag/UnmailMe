@@ -1,11 +1,6 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, ScrollView, TouchableOpacity} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {ImageView, UnmailMenu} from '../../components';
@@ -38,11 +33,10 @@ export const UnmailScreen = ({navigation}) => {
     );
   };
 
-
   return (
     <View style={[viewStyles.container, viewStyles.backgroundMagical]}>
       <ScrollView contentContainerStyle={unmailStyles.scrollContainer}>
-        <View>
+        <View style={viewStyles.container}>
           <Text style={[viewStyles.titleBold, viewStyles.textLight]}>
             Almost done
           </Text>
@@ -50,28 +44,15 @@ export const UnmailScreen = ({navigation}) => {
             How you would like to proceed recieving unwanted mail clutter for
             the post office.
           </Text>
-
-          <ImageView
-            imgSrc={src}
-            renderControls={renderImageControls}
-            imageHandler={openImagePreview}
-          />
         </View>
 
+        <ImageView
+          imgSrc={src}
+          renderControls={renderImageControls}
+          imageHandler={openImagePreview}
+        />
+
         <UnmailMenu />
-        {/* <View
-          style={[
-            unmailStyles.menuContainer,
-            viewStyles.roundedTopMedium,
-            viewStyles.paddingMedium,
-            viewStyles.backgroundLight,
-          ]}>
-          {unmailOptions.map((option, index) => (
-            <React.Fragment key={index}>
-              {renderUnmailMenuItem(option)}
-            </React.Fragment>
-          ))}
-        </View> */}
       </ScrollView>
     </View>
   );

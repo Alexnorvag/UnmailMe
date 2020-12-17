@@ -8,10 +8,11 @@ export const ImageView = ({imgSrc, renderControls, imageHandler}) => {
   return (
     <View
       style={[
+        viewStyles.columnComtainer,
+        viewStyles.marginVerticalSmall,
         isPortrait
           ? viewStyles.adaptiveContainerVertical
           : viewStyles.adaptiveContainerHorizontal,
-        viewStyles.marginVerticalSmall,
       ]}>
       <TouchableOpacity
         onPress={imageHandler}

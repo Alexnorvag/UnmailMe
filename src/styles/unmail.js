@@ -6,7 +6,7 @@ export const unmailStyles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   menuContainer: {
-    flex: 1,
+    flex: 0,
   },
   menuItemIcon: {
     flex: 0,

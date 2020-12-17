@@ -9,6 +9,9 @@ export const viewStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  columnComtainer: {
+    flex: 1,
+  },
   rowContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -67,8 +70,8 @@ export const viewStyles = StyleSheet.create({
     marginBottom: '1%',
   },
   paddingMedium: {
-    paddingHorizontal: '4%',
-    paddingVertical: '6%',
+    paddingHorizontal: '5%',
+    paddingVertical: '8%',
   },
   imageContainer: {
     alignItems: 'center',
@@ -223,10 +226,10 @@ export const viewStyles = StyleSheet.create({
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 12,
+      height: 16,
     },
-    shadowOpacity: 0.58,
-    shadowRadius: 16.0,
+    shadowOpacity: 0.25,
+    shadowRadius: 54.0,
 
     elevation: 24,
   },
