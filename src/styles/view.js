@@ -9,11 +9,14 @@ export const viewStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  columnComtainer: {
+  columnContainer: {
     flex: 1,
   },
   rowContainer: {
     flex: 1,
+    flexDirection: 'row',
+  },
+  flexRow: {
     flexDirection: 'row',
   },
   input: {
@@ -65,6 +68,9 @@ export const viewStyles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: '15%',
   },
+  marginTopSmall: {
+    marginTop: '2%',
+  },
   marginVerticalSmall: {
     marginTop: '2%',
     marginBottom: '1%',
@@ -72,6 +78,10 @@ export const viewStyles = StyleSheet.create({
   paddingMedium: {
     paddingHorizontal: '5%',
     paddingVertical: '8%',
+  },
+  paddingLargeReverse: {
+    paddingHorizontal: '12%',
+    paddingVertical: '9%',
   },
   imageContainer: {
     alignItems: 'center',
@@ -138,8 +148,6 @@ export const viewStyles = StyleSheet.create({
   modalHeader: {
     alignItems: 'center',
     paddingVertical: 15,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#00000033',
   },
   modalContent: {
     paddingHorizontal: 10,
@@ -150,15 +158,32 @@ export const viewStyles = StyleSheet.create({
     margin: 5,
     fontSize: 18,
   },
+  dividerRight: {
+    borderRightWidth: StyleSheet.hairlineWidth,
+    borderRightColor: '#00000033',
+  },
+  dividerBottom: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#00000033',
+  },
+  dividerTop: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#00000033',
+  },
+  textCenterX: {
+    textAlign: 'center',
+  },
   modalButton: {
     alignItems: 'center',
     paddingVertical: 15,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#00000033',
   },
   textBold: {
     fontSize: 20,
     fontFamily: font.type.bold,
+  },
+  textMedium: {
+    fontSize: 17,
+    fontFamily: font.type.medium,
   },
   textDefault: {
     fontSize: 14,

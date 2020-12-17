@@ -27,7 +27,7 @@ export const CameraScreen = ({route, navigation}) => {
         // fixOrientation: true,
       };
       const data = await cameraRef.current.takePictureAsync(options);
-      
+
       setImgSrc(data.uri);
     }
   };
@@ -90,7 +90,7 @@ export const CameraScreen = ({route, navigation}) => {
 
   const renderModalHeader = () => {
     return (
-      <View style={viewStyles.modalHeader}>
+      <View style={[viewStyles.modalHeader, viewStyles.dividerBottom]}>
         <Text style={[viewStyles.textBold, viewStyles.textDark]}>
           Instructions
         </Text>
@@ -120,7 +120,9 @@ export const CameraScreen = ({route, navigation}) => {
 
   const renderModalFooter = () => {
     return (
-      <TouchableOpacity style={viewStyles.modalButton} onPress={modalHandler}>
+      <TouchableOpacity
+        style={[viewStyles.modalButton, viewStyles.dividerTop]}
+        onPress={modalHandler}>
         <Text style={[viewStyles.textBold, viewStyles.textMagical]}>
           Confirm
         </Text>

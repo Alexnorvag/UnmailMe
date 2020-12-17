@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useReducer} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {Pressable, View, Text} from 'react-native';
+import {Pressable, View, Text, TouchableOpacity} from 'react-native';
 
 import {ModalWindow} from '../modal';
 import {unmailStyles, viewStyles} from '../../styles';
-import {useReducer} from 'react';
 
 const initialUnmailState = {text: '', title: '', screenName: ''};
 
@@ -28,7 +27,7 @@ const unmailReducer = (state, action) => {
       console.log('not you address');
       return {
         title: 'Are you sure this mail is not for you?',
-        message: "You don't receive mails from this sender anymore.",
+        message: "You won't receive mails from this sender anymore.",
         screenName: 'WrongAddress',
       };
     default:
@@ -76,6 +75,49 @@ export const UnmailMenu = () => {
     modalHandler();
   };
 
+  const renderModalContent = () => {
+    return (
+      <View style={[viewStyles.paddingLargeReverse]}>
+        <Text style={[viewStyles.textMedium, viewStyles.textCenterX]}>
+          {unmailOption.title}
+        </Text>
+        <Text
+          style={[
+            viewStyles.textDefault,
+            viewStyles.textCenterX,
+            viewStyles.marginTopSmall,
+          ]}>
+          {unmailOption.message}
+        </Text>
+      </View>
+    );
+  };
+
+  const renderModalFooter = () => {
+    return (
+      <View style={[viewStyles.flexRow, viewStyles.dividerTop]}>
+        <TouchableOpacity
+          style={[
+            viewStyles.columnContainer,
+            viewStyles.modalButton,
+            viewStyles.dividerRight,
+          ]}
+          onPress={modalHandler}>
+          <Text style={[viewStyles.textBold, viewStyles.textMagical]}>
+            Cancel
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[viewStyles.columnContainer, viewStyles.modalButton]}
+          onPress={modalHandler}>
+          <Text style={[viewStyles.textBold, viewStyles.textMagical]}>
+            Confirm
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
+
   useEffect(() => {
     console.log('unmailOption: ', unmailOption);
   }, [unmailOption]);
@@ -112,13 +154,13 @@ export const UnmailMenu = () => {
           </View>
         </Pressable>
       ))}
-      {/* <ModalWindow
+
+      <ModalWindow
         visible={modalVisibility}
         onVisibilityChange={modalHandler}
-        renderHeader={renderModalHeader}
         renderContent={renderModalContent}
         renderFooter={renderModalFooter}
-      /> */}
+      />
     </View>
   );
 };

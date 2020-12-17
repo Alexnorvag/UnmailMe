@@ -8,7 +8,7 @@ export const ImageView = ({imgSrc, renderControls, imageHandler}) => {
   return (
     <View
       style={[
-        viewStyles.columnComtainer,
+        viewStyles.columnContainer,
         viewStyles.marginVerticalSmall,
         isPortrait
           ? viewStyles.adaptiveContainerVertical
