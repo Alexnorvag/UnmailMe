@@ -20,8 +20,8 @@ export const ModalWindow = ({
         <View style={viewStyles.centeredView}>
           <View style={viewStyles.modalContainer}>
             {renderHeader && renderHeader()}
-            {renderContent()}
-            {renderFooter()}
+            {renderContent && renderContent()}
+            {renderFooter && renderFooter()}
           </View>
         </View>
       </Modal>

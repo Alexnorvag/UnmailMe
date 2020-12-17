@@ -5,8 +5,10 @@ import {
   IntroScreen,
   CameraScreen,
   UnmailScreen,
-  PreviewScreen,
   HomeScreen,
+  UnsubscribeScreen,
+  SwitchEmailScreen,
+  WrongAddressScreen,
 } from '../screens';
 import {navigationStyles} from '../styles';
 
@@ -36,11 +38,9 @@ export const MainStack = () => {
         component={IntroScreen}
         options={{headerLeft: null}}
       />
-      <Stack.Screen
-        name="Preview"
-        component={PreviewScreen}
-        options={{headerShown: false}}
-      />
+      <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} />
+      <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
+      <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
     </>
   );

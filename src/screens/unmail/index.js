@@ -52,7 +52,7 @@ export const UnmailScreen = ({navigation}) => {
           imageHandler={openImagePreview}
         />
 
-        <UnmailMenu />
+        <UnmailMenu navigation={navigation} />
       </ScrollView>
     </View>
   );

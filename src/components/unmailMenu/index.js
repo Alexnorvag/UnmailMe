@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {useState, useReducer} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Pressable, View, Text, TouchableOpacity} from 'react-native';
 
@@ -35,7 +35,7 @@ const unmailReducer = (state, action) => {
   }
 };
 
-export const UnmailMenu = () => {
+export const UnmailMenu = ({navigation}) => {
   const [unmailOption, dispatch] = useReducer(
     unmailReducer,
     initialUnmailState,
@@ -75,6 +75,11 @@ export const UnmailMenu = () => {
     modalHandler();
   };
 
+  const confirmUnmailing = () => {
+    modalHandler();
+    navigation.navigate(unmailOption.screenName);
+  };
+
   const renderModalContent = () => {
     return (
       <View style={[viewStyles.paddingLargeReverse]}>
@@ -109,7 +114,7 @@ export const UnmailMenu = () => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[viewStyles.columnContainer, viewStyles.modalButton]}
-          onPress={modalHandler}>
+          onPress={confirmUnmailing}>
           <Text style={[viewStyles.textBold, viewStyles.textMagical]}>
             Confirm
           </Text>
@@ -117,10 +122,6 @@ export const UnmailMenu = () => {
       </View>
     );
   };
-
-  useEffect(() => {
-    console.log('unmailOption: ', unmailOption);
-  }, [unmailOption]);
 
   return (
     <View
