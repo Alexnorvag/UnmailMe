@@ -2,12 +2,12 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import ScreenSlider from 'react-native-app-intro-slider';
 
-import {viewStyles, introStyles} from '../../styles';
 import {
   IntroGettingStartedIcon,
   IntroTakePhotoIcon,
   BackgroundIcon,
 } from '../../assets/svg';
+import {viewStyles, introStyles} from '../../styles';
 
 const slides = [
   {
