@@ -19,7 +19,7 @@ export const ImageView = ({imgSrc, renderControls, imageHandler}) => {
         style={[
           isPortrait
             ? viewStyles.imageContainerVertical
-            : viewStyles.imageContainerHorizontal,
+            : viewStyles.rowContainer,
           viewStyles.paddingSmall,
         ]}>
         {imgSrc ? (

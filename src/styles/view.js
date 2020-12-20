@@ -75,6 +75,10 @@ export const viewStyles = StyleSheet.create({
     marginTop: '2%',
     marginBottom: '1%',
   },
+  marginVerticalMedium: {
+    marginTop: '5%',
+    marginBottom: '3%',
+  },
   paddingMedium: {
     paddingHorizontal: '5%',
     paddingVertical: '8%',
@@ -221,7 +225,9 @@ export const viewStyles = StyleSheet.create({
       },
     ],
   },
-  imageContainerHorizontal: {flex: 1, flexDirection: 'row'},
+  imageShiftLeftSmall: {
+    left: '-10%',
+  },
   image: {
     flex: 1,
     maxWidth: '100%',
