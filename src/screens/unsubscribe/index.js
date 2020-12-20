@@ -58,8 +58,10 @@ export const UnsubscribeScreen = () => {
           style={{
             flex: 1,
             flexDirection: 'row',
-            left: '-15%',
-            aspectRatio: 0.9,
+            left: '-10%',
+            // aspectRatio: 0.9,
+            // backgroundColor: 'violet',
+            justifyContent: 'center',
           }}>
           <UnmailUnsubscribeIcon />
         </View>
