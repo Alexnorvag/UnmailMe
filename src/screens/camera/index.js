@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {Text, View, TouchableOpacity} from 'react-native';
 import BarcodeMask from 'react-native-barcode-mask';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 import {isPortrait} from '../../constants';
 import {createPhoto} from '../../features/camera/cameraSlice';

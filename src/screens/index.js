@@ -6,3 +6,4 @@ export {HomeScreen} from './home';
 export {UnsubscribeScreen} from './unsubscribe';
 export {SwitchEmailScreen} from './switchEmail';
 export {WrongAddressScreen} from './wrongAddress';
+export {SwitchToEmailScreen} from './switchToEmail';

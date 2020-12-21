@@ -16,6 +16,10 @@ export const viewStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
+  centered: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   flexRow: {
     flexDirection: 'row',
   },
