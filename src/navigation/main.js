@@ -19,6 +19,11 @@ export const MainStack = () => {
     <>
       <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} />
       <Stack.Screen
+        name="Intro"
+        component={IntroScreen}
+        options={{headerLeft: null}}
+      />
+      <Stack.Screen
         name="Camera"
         component={CameraScreen}
         options={{headerShown: false}}
@@ -34,11 +39,7 @@ export const MainStack = () => {
           },
         }}
       />
-      <Stack.Screen
-        name="Intro"
-        component={IntroScreen}
-        options={{headerLeft: null}}
-      />
+
       <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
       <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />

@@ -2,12 +2,12 @@ import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 
 import {BackgroundIcon, UnmailUnsubscribeIcon} from '../../assets/svg';
-import {introStyles, viewStyles} from '../../styles';
+import {viewStyles} from '../../styles';
 
 export const UnsubscribeScreen = () => {
   return (
     <View style={[viewStyles.container]}>
-      <View style={[viewStyles.imageContainer, introStyles.imageContainer]}>
+      <View style={[viewStyles.imageContainer, viewStyles.flexThree]}>
         <View style={viewStyles.imageContainerBackground}>
           <BackgroundIcon />
         </View>
@@ -20,8 +20,7 @@ export const UnsubscribeScreen = () => {
           <UnmailUnsubscribeIcon />
         </View>
       </View>
-      <View
-        style={[introStyles.contentWrapper, viewStyles.marginVerticalMedium]}>
+      <View style={[viewStyles.flexTwo, viewStyles.marginVerticalMedium]}>
         <View style={[viewStyles.container]}>
           <Text style={viewStyles.titleBold}>Congratulations</Text>
           <Text style={viewStyles.description}>

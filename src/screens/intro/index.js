@@ -35,7 +35,7 @@ const slides = [
 export const IntroScreen = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
-      <View style={introStyles.container}>
+      <View style={[introStyles.container, {backgroundColor: 'red'}]}>
         <View style={[viewStyles.imageContainer, introStyles.imageContainer]}>
           <View style={viewStyles.imageContainerBackground}>
             <BackgroundIcon />

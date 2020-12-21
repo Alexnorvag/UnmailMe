@@ -19,6 +19,12 @@ export const viewStyles = StyleSheet.create({
   flexRow: {
     flexDirection: 'row',
   },
+  flexTwo: {
+    flex: 2,
+  },
+  flexThree: {
+    flex: 3,
+  },
   input: {
     height: 50,
     fontSize: 17,

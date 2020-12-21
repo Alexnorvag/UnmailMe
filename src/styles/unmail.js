@@ -39,5 +39,5 @@ export const unmailStyles = StyleSheet.create({
     backgroundColor: 'rgba(40, 89, 162, 0.2)',
     color: '#2859A1',
   },
-
+  
 });
