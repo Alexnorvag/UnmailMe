@@ -17,6 +17,8 @@ const Stack = createStackNavigator();
 export const MainStack = () => {
   return (
     <>
+      <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
+      <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
       <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} />
       <Stack.Screen
         name="Intro"
@@ -40,8 +42,6 @@ export const MainStack = () => {
         }}
       />
 
-      <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
-      <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
     </>
   );
