@@ -10,6 +10,7 @@ import {
   SwitchEmailScreen,
   WrongAddressScreen,
   SwitchToEmailScreen,
+  CongratsScreen,
 } from '../screens';
 import {navigationStyles} from '../styles';
 
@@ -18,7 +19,6 @@ const Stack = createStackNavigator();
 export const MainStack = () => {
   return (
     <>
-      <Stack.Screen name="SwitchToEmail" component={SwitchToEmailScreen} />
       <Stack.Screen
         name="Intro"
         component={IntroScreen}
@@ -41,9 +41,11 @@ export const MainStack = () => {
         }}
       />
 
+      <Stack.Screen name="Congrats" component={CongratsScreen} />
       <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
       <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
       <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} />
+      <Stack.Screen name="SwitchToEmail" component={SwitchToEmailScreen} />
       <Stack.Screen name="Home" component={HomeScreen} />
     </>
   );

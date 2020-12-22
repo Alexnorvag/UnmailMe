@@ -35,7 +35,7 @@ const slides = [
 export const IntroScreen = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
-      <View style={[introStyles.container, {backgroundColor: 'red'}]}>
+      <View style={[introStyles.container]}>
         <View style={[viewStyles.imageContainer, introStyles.imageContainer]}>
           <View style={viewStyles.imageContainerBackground}>
             <BackgroundIcon />
@@ -58,7 +58,9 @@ export const IntroScreen = ({navigation}) => {
           viewStyles.buttonMagical,
           viewStyles.marginVerticalSmall,
         ]}>
-        <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>{title}</Text>
+        <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>
+          {title}
+        </Text>
       </View>
     );
   };

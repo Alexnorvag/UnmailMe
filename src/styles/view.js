@@ -29,6 +29,12 @@ export const viewStyles = StyleSheet.create({
   flexThree: {
     flex: 3,
   },
+  spaceAround: {
+    justifyContent: 'space-around',
+  },
+  fullWidth: {
+    width: '100%',
+  },
   input: {
     height: 50,
     fontSize: 17,

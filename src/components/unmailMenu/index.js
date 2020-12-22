@@ -5,7 +5,12 @@ import {Pressable, View, Text, TouchableOpacity} from 'react-native';
 import {ModalWindow} from '../modal';
 import {unmailStyles, viewStyles} from '../../styles';
 
-const initialUnmailState = {text: '', title: '', screenName: ''};
+const initialUnmailState = {
+  text: '',
+  title: '',
+  screenName: '',
+  screenType: '',
+};
 
 const unmailReducer = (state, action) => {
   switch (action.type) {
@@ -14,21 +19,24 @@ const unmailReducer = (state, action) => {
       return {
         title: 'Are you sure you want to unsubscribe to this sender?',
         message: "You don't receive mails from this sender anymore.",
-        screenName: 'Unsubscribe',
+        screenName: 'Congrats',
+        screenType: action.type,
       };
     case 'SWITCH_TO_EMAIL':
       console.log('switch to email this sender');
       return {
         title: 'Are you sure that you want switch to email?',
         message: 'Your mail will be forwarded to your email.',
-        screenName: 'SwitchEmail',
+        screenName: 'SwitchToEmail',
+        screenType: action.type,
       };
     case 'WRONG_ADDRESS':
       console.log('not you address');
       return {
         title: 'Are you sure this mail is not for you?',
         message: "You won't receive mails from this sender anymore.",
-        screenName: 'WrongAddress',
+        screenName: 'Congrats',
+        screenType: action.type,
       };
     default:
       return {...state};
@@ -66,18 +74,25 @@ export const UnmailMenu = ({navigation}) => {
     },
   ];
 
-  const modalHandler = () => {
+  const modalToggle = () => {
     setModalVisibility((v) => !v);
   };
 
   const unmailHandler = (actionName) => {
     dispatch({type: actionName});
-    modalHandler();
+
+    modalToggle();
   };
 
   const confirmUnmailing = () => {
-    modalHandler();
-    navigation.navigate(unmailOption.screenName);
+    modalToggle();
+
+    navigation.navigate(unmailOption.screenName, {
+      screenType: unmailOption.screenType,
+    });
+    // navigation.navigate('Congrats', {
+    // screenName: unmailOption.screenName,
+    // });
   };
 
   const renderModalContent = () => {
@@ -107,7 +122,7 @@ export const UnmailMenu = ({navigation}) => {
             viewStyles.modalButton,
             viewStyles.dividerRight,
           ]}
-          onPress={modalHandler}>
+          onPress={modalToggle}>
           <Text style={[viewStyles.textBold, viewStyles.textMagical]}>
             Cancel
           </Text>
@@ -158,7 +173,7 @@ export const UnmailMenu = ({navigation}) => {
 
       <ModalWindow
         visible={modalVisibility}
-        onVisibilityChange={modalHandler}
+        onVisibilityChange={modalToggle}
         renderContent={renderModalContent}
         renderFooter={renderModalFooter}
       />
