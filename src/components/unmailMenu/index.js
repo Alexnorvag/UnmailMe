@@ -90,9 +90,6 @@ export const UnmailMenu = ({navigation}) => {
     navigation.navigate(unmailOption.screenName, {
       screenType: unmailOption.screenType,
     });
-    // navigation.navigate('Congrats', {
-    // screenName: unmailOption.screenName,
-    // });
   };
 
   const renderModalContent = () => {

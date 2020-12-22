@@ -15,11 +15,11 @@ export const httpBase = () => {
 
   api.interceptors.response.use(
     (response) => {
-      console.log('[API response] -> config: ', response);
+      console.log('[API RESPONSE] -> config: ', response);
       return response;
     },
     async (error) => {
-      console.log('[API response] -> error: ', error.request);
+      console.log('[API RESPONSE] -> error: ', error.request);
 
       if (
         error.request._hasError === true &&

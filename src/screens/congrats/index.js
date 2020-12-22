@@ -1,5 +1,6 @@
 import React, {useEffect, useReducer} from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
+import {useSelector} from 'react-redux';
 
 import {
   BackgroundIcon,
@@ -7,16 +8,19 @@ import {
   UnmailSwitchEmailIcon,
   UnmailWrongAddressIcon,
 } from '../../assets/svg';
+import {unsubscribe, switchToEmail, wrongAddress} from '../../services';
 import {viewStyles} from '../../styles';
 
 const initialCongratState = {
-  renderImage: () => {},
+  renderImage: () => null,
   screenMessage: '',
+  // unmailHandler: () => {},
 };
 
 const congratsReducer = (state, action) => {
   switch (action.type) {
     case 'UNSUBSCRIBE':
+      unsubscribe(action.payload);
       return {
         renderImage: () => (
           <View
@@ -32,12 +36,14 @@ const congratsReducer = (state, action) => {
           "You've successfuly unsubscribed to recieving any more mail from this sender.",
       };
     case 'SWITCH_TO_EMAIL':
+      switchToEmail(action.payload);
       return {
         renderImage: () => <UnmailSwitchEmailIcon />,
         message:
           'You successfuly switched to only recieving emails from this sender.',
       };
     case 'WRONG_ADDRESS':
+      wrongAddress(action.payload);
       return {
         renderImage: () => <UnmailWrongAddressIcon />,
         message:
@@ -53,14 +59,35 @@ export const CongratsScreen = ({route, navigation}) => {
     congratsReducer,
     initialCongratState,
   );
+  const {src} = useSelector((state) => state.camera);
 
   const navigateToCamera = () => {
     navigation.navigate('Camera');
   };
 
   useEffect(() => {
-    dispatch({type: route.params.screenType});
-  }, [route.params]);
+    const {email, screenType} = route.params;
+    const payload = email
+      ? {
+          image: src,
+          email,
+        }
+      : {image: src};
+
+    dispatch({type: screenType, payload});
+  }, [src, route.params]);
+
+  // useEffect(() => {
+  //   const fetchSmhtg = async () => {
+  //     // const {email} = route.params;
+  //     await unsubscribe({image: src});
+  //     // console.log('src: ', src);
+  //     // console.log('email: ', email);
+  //     // await congratScreen.unmailHandler({image: src, email});
+  //   };
+
+  //   fetchSmhtg();
+  // }, [src, route.params]);
 
   return (
     <View style={[viewStyles.container]}>

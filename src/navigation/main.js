@@ -5,10 +5,9 @@ import {
   IntroScreen,
   CameraScreen,
   UnmailScreen,
-  HomeScreen,
-  UnsubscribeScreen,
-  SwitchEmailScreen,
-  WrongAddressScreen,
+  // UnsubscribeScreen,
+  // SwitchEmailScreen,
+  // WrongAddressScreen,
   SwitchToEmailScreen,
   CongratsScreen,
 } from '../screens';
@@ -41,12 +40,11 @@ export const MainStack = () => {
         }}
       />
 
-      <Stack.Screen name="Congrats" component={CongratsScreen} />
-      <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
+      {/* <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
       <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
-      <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} />
+    <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} /> */}
       <Stack.Screen name="SwitchToEmail" component={SwitchToEmailScreen} />
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Congrats" component={CongratsScreen} />
     </>
   );
 };

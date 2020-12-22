@@ -6,9 +6,10 @@ import {switchEmailSchema} from '../../validation';
 import {viewStyles} from '../../styles';
 
 export const SwitchToEmailScreen = ({route, navigation}) => {
-  const switchToEmail = () => {
+  const switchToEmail = ({email}) => {
     navigation.navigate('Congrats', {
       screenType: route.params.screenType,
+      email,
     });
   };
 
@@ -27,7 +28,7 @@ export const SwitchToEmailScreen = ({route, navigation}) => {
           validationSchema={switchEmailSchema}
           onSubmit={(values) => {
             console.log('values: ', values);
-            switchToEmail();
+            switchToEmail({...values});
           }}>
           {({
             handleChange,
