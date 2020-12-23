@@ -40,9 +40,6 @@ export const MainStack = () => {
         }}
       />
 
-      {/* <Stack.Screen name="SwitchEmail" component={SwitchEmailScreen} />
-      <Stack.Screen name="WrongAddress" component={WrongAddressScreen} />
-    <Stack.Screen name="Unsubscribe" component={UnsubscribeScreen} /> */}
       <Stack.Screen name="SwitchToEmail" component={SwitchToEmailScreen} />
       <Stack.Screen name="Congrats" component={CongratsScreen} />
     </>

@@ -2,8 +2,6 @@ import {store} from '../utils/httpUtil';
 
 export const unsubscribe = async ({image}) => {
   try {
-    console.log('image: ', image);
-
     const res = await store('api/unsubscribe', {image});
 
     return res.data;

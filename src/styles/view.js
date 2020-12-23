@@ -32,6 +32,9 @@ export const viewStyles = StyleSheet.create({
   spaceAround: {
     justifyContent: 'space-around',
   },
+  spaceEvenly: {
+    justifyContent: 'space-evenly',
+  },
   fullWidth: {
     width: '100%',
   },

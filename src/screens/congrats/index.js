@@ -12,16 +12,16 @@ import {unsubscribe, switchToEmail, wrongAddress} from '../../services';
 import {viewStyles} from '../../styles';
 
 const initialCongratState = {
-  renderImage: () => null,
+  renderImage: () => {},
   screenMessage: '',
-  // unmailHandler: () => {},
+  unmailHandler: () => {},
 };
 
 const congratsReducer = (state, action) => {
   switch (action.type) {
     case 'UNSUBSCRIBE':
-      unsubscribe(action.payload);
       return {
+        unmailHandler: unsubscribe,
         renderImage: () => (
           <View
             style={[
@@ -36,15 +36,15 @@ const congratsReducer = (state, action) => {
           "You've successfuly unsubscribed to recieving any more mail from this sender.",
       };
     case 'SWITCH_TO_EMAIL':
-      switchToEmail(action.payload);
       return {
+        unmailHandler: switchToEmail,
         renderImage: () => <UnmailSwitchEmailIcon />,
         message:
           'You successfuly switched to only recieving emails from this sender.',
       };
     case 'WRONG_ADDRESS':
-      wrongAddress(action.payload);
       return {
+        unmailHandler: wrongAddress,
         renderImage: () => <UnmailWrongAddressIcon />,
         message:
           'You have let the sender know they have been mailing to the wrong address.',
@@ -66,28 +66,27 @@ export const CongratsScreen = ({route, navigation}) => {
   };
 
   useEffect(() => {
-    const {email, screenType} = route.params;
-    const payload = email
-      ? {
-          image: src,
-          email,
-        }
-      : {image: src};
+    const {screenType} = route.params;
 
-    dispatch({type: screenType, payload});
-  }, [src, route.params]);
+    dispatch({type: screenType});
+  }, [route.params]);
 
-  // useEffect(() => {
-  //   const fetchSmhtg = async () => {
-  //     // const {email} = route.params;
-  //     await unsubscribe({image: src});
-  //     // console.log('src: ', src);
-  //     // console.log('email: ', email);
-  //     // await congratScreen.unmailHandler({image: src, email});
-  //   };
+  useEffect(() => {
+    const unmailing = async () => {
+      const {email} = route.params;
 
-  //   fetchSmhtg();
-  // }, [src, route.params]);
+      const unmailData = {
+        image: src,
+        ...(email && {email}),
+      };
+
+      await congratScreen.unmailHandler(unmailData);
+    };
+
+    if (congratScreen.unmailHandler) {
+      unmailing();
+    }
+  }, [congratScreen, src, route.params]);
 
   return (
     <View style={[viewStyles.container]}>

@@ -1,20 +1,14 @@
 import React, {useEffect, useRef, useState} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  StyleSheet,
-} from 'react-native';
+import {Text, TextInput, TouchableOpacity, View} from 'react-native';
 import {Formik} from 'formik';
-import {getStatusBarHeight} from 'react-native-status-bar-height';
 import {useDispatch} from 'react-redux';
 
-import {viewStyles} from '../../styles';
 import {loginSchema} from '../../validation';
 import {login} from '../../features/signin/signinSlice';
 import {BackgroundIcon} from '../../assets/svg';
+import font from '../../themes/fonts';
+import {viewStyles} from '../../styles';
 
 export const LoginScreen = () => {
   const [isSecure, setIsSecure] = useState(true);
@@ -30,14 +24,14 @@ export const LoginScreen = () => {
   useEffect(() => {
     inputElementRef.current.setNativeProps({
       style: {
-        fontFamily: 'Roboto-Regular',
+        fontFamily: font.type.secondary,
       },
     });
-  }, []);
+  }, [isSecure]);
 
   return (
     <View style={viewStyles.container}>
-      <View style={styles.loginContainer}>
+      <View style={[viewStyles.rowContainer, viewStyles.paddingMedium]}>
         <View style={[viewStyles.imageContainerBackground]}>
           <BackgroundIcon />
         </View>
@@ -45,7 +39,6 @@ export const LoginScreen = () => {
           initialValues={{email: '', password: ''}}
           validationSchema={loginSchema}
           onSubmit={(values) => {
-            console.log('values: ', values);
             dispatch(login(values));
           }}>
           {({
@@ -56,8 +49,9 @@ export const LoginScreen = () => {
             errors,
             touched,
           }) => (
-            <View style={{flex: 1, width: '100%'}}>
-              <View style={{flex: 1, justifyContent: 'space-evenly'}}>
+            <View style={[viewStyles.columnContainer, viewStyles.fullWidth]}>
+              <View
+                style={[viewStyles.columnContainer, viewStyles.spaceEvenly]}>
                 <View>
                   <View>
                     <TextInput
@@ -73,25 +67,27 @@ export const LoginScreen = () => {
                     </Text>
                   </View>
                   <View>
-                    <TextInput
-                      ref={inputElementRef}
-                      autoCapitalize="none"
-                      placeholder="Password"
-                      style={viewStyles.input}
-                      onChangeText={handleChange('password')}
-                      onBlur={handleBlur('password')}
-                      value={values.password}
-                      secureTextEntry={isSecure}
-                    />
-                    <TouchableOpacity
-                      onPress={changePasswordVisibility}
-                      style={styles.searchIcon}>
-                      <Icon
-                        name={isSecure ? 'eye' : 'eye-slash'}
-                        size={24}
-                        color="#000"
+                    <View>
+                      <TextInput
+                        ref={inputElementRef}
+                        autoCapitalize="none"
+                        placeholder="Password"
+                        style={viewStyles.input}
+                        onChangeText={handleChange('password')}
+                        onBlur={handleBlur('password')}
+                        value={values.password}
+                        secureTextEntry={isSecure}
                       />
-                    </TouchableOpacity>
+                      <TouchableOpacity
+                        onPress={changePasswordVisibility}
+                        style={[viewStyles.positionRight, viewStyles.centered]}>
+                        <Icon
+                          name={isSecure ? 'eye' : 'eye-slash'}
+                          size={24}
+                          color="#000"
+                        />
+                      </TouchableOpacity>
+                    </View>
                     <Text style={viewStyles.errorValidationText}>
                       {touched.password && errors.password}
                     </Text>
@@ -117,20 +113,3 @@ export const LoginScreen = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  loginContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 20,
-    marginBottom: getStatusBarHeight(),
-  },
-  searchIcon: {
-    position: 'absolute',
-    top: 24,
-    right: 24,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
