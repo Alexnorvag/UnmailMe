@@ -19,9 +19,9 @@ export const ModalWindow = ({
         onBackdropPress={onVisibilityChange}>
         <View style={viewStyles.centeredView}>
           <View style={viewStyles.modalContainer}>
-            {renderHeader()}
-            {renderContent()}
-            {renderFooter()}
+            {renderHeader && renderHeader()}
+            {renderContent && renderContent()}
+            {renderFooter && renderFooter()}
           </View>
         </View>
       </Modal>

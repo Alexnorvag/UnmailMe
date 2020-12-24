@@ -14,6 +14,6 @@ export const signin = async ({email, password}) => {
 
     return {token};
   } catch (error) {
-    throw new Error(`😱 login reques failed: ${error}`);
+    throw new Error(`😱 login request failed: ${error}`);
   }
 };

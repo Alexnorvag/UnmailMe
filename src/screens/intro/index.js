@@ -2,12 +2,12 @@ import React from 'react';
 import {Text, View} from 'react-native';
 import ScreenSlider from 'react-native-app-intro-slider';
 
-import {viewStyles, introStyles} from '../../styles';
 import {
   IntroGettingStartedIcon,
   IntroTakePhotoIcon,
   BackgroundIcon,
 } from '../../assets/svg';
+import {viewStyles, introStyles} from '../../styles';
 
 const slides = [
   {
@@ -35,7 +35,7 @@ const slides = [
 export const IntroScreen = ({navigation}) => {
   const renderItem = ({item}) => {
     return (
-      <View style={introStyles.container}>
+      <View style={[introStyles.container]}>
         <View style={[viewStyles.imageContainer, introStyles.imageContainer]}>
           <View style={viewStyles.imageContainerBackground}>
             <BackgroundIcon />
@@ -56,9 +56,11 @@ export const IntroScreen = ({navigation}) => {
           viewStyles.button,
           viewStyles.buttonMedium,
           viewStyles.buttonMagical,
-          viewStyles.marginVerticalMedium,
+          viewStyles.marginVerticalSmall,
         ]}>
-        <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>{title}</Text>
+        <Text style={[viewStyles.buttonTextDefault, viewStyles.textBold]}>
+          {title}
+        </Text>
       </View>
     );
   };

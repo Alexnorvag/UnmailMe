@@ -9,6 +9,35 @@ export const viewStyles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  columnContainer: {
+    flex: 1,
+  },
+  rowContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+  centered: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  flexRow: {
+    flexDirection: 'row',
+  },
+  flexTwo: {
+    flex: 2,
+  },
+  flexThree: {
+    flex: 3,
+  },
+  spaceAround: {
+    justifyContent: 'space-around',
+  },
+  spaceEvenly: {
+    justifyContent: 'space-evenly',
+  },
+  fullWidth: {
+    width: '100%',
+  },
   input: {
     height: 50,
     fontSize: 17,
@@ -58,9 +87,24 @@ export const viewStyles = StyleSheet.create({
     textAlign: 'center',
     marginHorizontal: '15%',
   },
-  marginVerticalMedium: {
+  marginTopSmall: {
+    marginTop: '2%',
+  },
+  marginVerticalSmall: {
     marginTop: '2%',
     marginBottom: '1%',
+  },
+  marginVerticalMedium: {
+    marginTop: '5%',
+    marginBottom: '3%',
+  },
+  paddingMedium: {
+    paddingHorizontal: '5%',
+    paddingVertical: '8%',
+  },
+  paddingLargeReverse: {
+    paddingHorizontal: '12%',
+    paddingVertical: '9%',
   },
   imageContainer: {
     alignItems: 'center',
@@ -94,6 +138,10 @@ export const viewStyles = StyleSheet.create({
     left: 0,
     right: 0,
   },
+  positionTopRight: {
+    position: 'absolute',
+    right: 0,
+  },
   closeButton: {
     color: '#fff',
     backgroundColor: '#000',
@@ -123,8 +171,6 @@ export const viewStyles = StyleSheet.create({
   modalHeader: {
     alignItems: 'center',
     paddingVertical: 15,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#00000033',
   },
   modalContent: {
     paddingHorizontal: 10,
@@ -135,15 +181,32 @@ export const viewStyles = StyleSheet.create({
     margin: 5,
     fontSize: 18,
   },
+  dividerRight: {
+    borderRightWidth: StyleSheet.hairlineWidth,
+    borderRightColor: '#00000033',
+  },
+  dividerBottom: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#00000033',
+  },
+  dividerTop: {
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#00000033',
+  },
+  textCenterX: {
+    textAlign: 'center',
+  },
   modalButton: {
     alignItems: 'center',
     paddingVertical: 15,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    borderTopColor: '#00000033',
   },
   textBold: {
     fontSize: 20,
     fontFamily: font.type.bold,
+  },
+  textMedium: {
+    fontSize: 17,
+    fontFamily: font.type.medium,
   },
   textDefault: {
     fontSize: 14,
@@ -181,10 +244,16 @@ export const viewStyles = StyleSheet.create({
       },
     ],
   },
-  imageContainerHorizontal: {flex: 1, flexDirection: 'row'},
+  imageShiftLeftSmall: {
+    left: '-10%',
+  },
   image: {
     flex: 1,
     maxWidth: '100%',
+  },
+  roundedTopMedium: {
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
   },
   roundedSmall: {
     borderRadius: 20,
@@ -198,5 +267,20 @@ export const viewStyles = StyleSheet.create({
   backgroundMagical: {
     backgroundColor: '#771F85',
   },
+  backgroundLight: {
+    backgroundColor: '#fff',
+  },
   imagePlaceholder: {flex: 1, backgroundColor: '#f7f7f7'},
+  boxShadowMedium: {
+    zIndex: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 16,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 54.0,
+
+    elevation: 24,
+  },
 });
