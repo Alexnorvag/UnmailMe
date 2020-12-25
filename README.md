@@ -135,8 +135,14 @@ The generated AAB can be found under `android/app/build/outputs/bundle/release/a
 
 ### iOS Build
 
-- Start ios application
+#### Enable App Transport Security
 
-```bash
-$ npx react-native run-ios
-```
+You should re-enable ATS prior to building your app for production by removing the `localhost` entry from the `NSExceptionDomains` dictionary and setting `NSAllowsArbitraryLoads` to `false` in your `Info.plist` file in the `ios/` folder. You can also re-enable ATS from within Xcode by opening your target properties under the Info pane and editing the App Transport Security Settings entry.
+
+#### Configure release scheme
+
+To configure your app to be built using the `Release` scheme, go to **Product → Scheme → Edit Scheme**. Select the Run tab in the sidebar, then set the Build Configuration dropdown to `Release`.
+
+#### Build app for release
+
+You can now build your app for release by tapping `⌘B` or selecting **Product → Build** from the menu bar. Once built for release, you'll be able to distribute the app to beta testers and submit the app to the App Store.
