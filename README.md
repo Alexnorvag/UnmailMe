@@ -135,6 +135,8 @@ The generated AAB can be found under `android/app/build/outputs/bundle/release/a
 
 ### iOS Build
 
+> Xcode needed for this
+
 #### Enable App Transport Security
 
 You should re-enable ATS prior to building your app for production by removing the `localhost` entry from the `NSExceptionDomains` dictionary and setting `NSAllowsArbitraryLoads` to `false` in your `Info.plist` file in the `ios/` folder. You can also re-enable ATS from within Xcode by opening your target properties under the Info pane and editing the App Transport Security Settings entry.
