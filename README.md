@@ -40,7 +40,25 @@ $ npx react-native run-android
 
 #### iOS Run
 
-- Run ios application
+1) Open ios folder
+
+```bash
+$ cd ios
+```
+
+2) Installing pods
+
+```bash
+$ pod install
+```
+
+3) Go back to project folder
+
+```bash
+$ cd ..
+```
+
+4) Run ios application
 
 ```bash
 $ npx react-native run-ios
